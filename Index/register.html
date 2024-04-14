@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style_login.register.css">
 
-
     <title>註冊</title>
 
 </head>
@@ -68,7 +67,7 @@
             <img src="image/icon_dots.png" >
         </div>
 
-        <form action="" class="form">
+        <form action="/api/Member/Register" class="form" id="registerForm" method="post">
         
             <!-- 帳號密碼設定 -->
             <div class="main" style="margin-bottom: 20px;">
@@ -80,12 +79,12 @@
                     
                 <div class="div">
                     <p>帳號</p>
-                    <input type="text" placeholder="請輸入帳號" class="text">  
+                    <input type="text" placeholder="請輸入帳號" class="text" name="Account1">  
                 </div>
                     
                 <div class="div">
                     <p>密碼</p>
-                    <input type="password" placeholder="請輸入密碼" class="text">  
+                    <input type="password" placeholder="請輸入密碼" class="text" name="Password">  
                 </div>
 
             </div>
@@ -100,17 +99,17 @@
 
                 <div class="div">
                      <p>姓名</p>
-                    <input type="text" placeholder="請輸入姓名" class="text">  
+                    <input type="text" placeholder="請輸入姓名" class="text" name="Name">  
                 </div>
 
                 <div class="div">
                     <p>電話號碼</p>
-                    <input type="text" placeholder="請輸入電話號碼" class="text">  
+                    <input type="text" placeholder="請輸入電話號碼" class="text" name="Cellphone">  
                 </div>
 
                 <div class="div">
                     <p>電子信箱</p>
-                    <input type="email" placeholder="請輸入電子信箱" class="text">  
+                    <input type="email" placeholder="請輸入電子信箱" class="text" name="Email">  
                 </div>
 
             </div>
@@ -125,6 +124,48 @@
     <footer>
         <p>@2024手機樂園股份有限公司版權所有</p>
     </footer>
+
+
+
+    <script>
+        
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表單預設的提交行為
+
+            const formData = new FormData(this); // 獲取表單資料
+
+            // 將 FormData 轉換成 JSON 格式
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            const url = "http://localhost:5193/api/Member/Register"; // 替換成你的後端 API 的 URL
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData), // 將表單資料轉換成 JSON 字串送出
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('伺服器回應錯誤');
+                }
+                return response.json(); // 解析回傳的 JSON
+            })
+            .then(data => {
+                // 在這裡處理從後端收到的回應
+                console.log(data);
+                // 可以在這裡添加一些反饋給使用者的動作，例如顯示註冊成功訊息或導向其他頁面
+            })
+            .catch(error => {
+                // 處理錯誤
+                console.error('發生錯誤:', error);
+            });
+        });
+    </script>
         
 </body>
 
