@@ -27,12 +27,14 @@ function updateHeader(){
         SetLogoutBtn();
     }
 }
+
 function BtnDisplayNone(){
     const Loginbtn = document.querySelector('.header .nav2:nth-child(3)');
     const Registerbtn = document.querySelector('.header .nav2:nth-child(4)');
     Loginbtn.style.display = "none";
     Registerbtn.style.display = "none";
 }
+
 function SetUserBtn(){
     const navMain = document.querySelector('.header:nth-child(2) .nav_main');
     const navUserDiv = document.createElement('div');
