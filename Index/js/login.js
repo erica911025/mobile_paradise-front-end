@@ -1,4 +1,5 @@
 const form = document.querySelector('.form');
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
     const username = document.querySelector('.text[name="username"]').value;
@@ -10,14 +11,16 @@ form.addEventListener('submit', function(event) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ Account1: username, Password: password }),
-        credentials: 'include' // 設置為 'include' 可以讓瀏覽器發送包含認證資訊的請求
+        credentials: 'include'
     })
+    
     .then(response => {
         if (!response.ok) {
             throw new Error('登入失敗');
         }
         return response.json();
     })
+
     .then(data => {
         var status = data.Status;
         if (status === 200) {
@@ -27,10 +30,12 @@ form.addEventListener('submit', function(event) {
             alert('登入失敗，請檢查您的帳號和密碼');
         }
     })
+
     .catch(error => {
         console.error('登入失敗:', error.message);
         alert('登入失敗，請檢查您的帳號和密碼');
     });
+
 }); 
 
 // const form = document.querySelector('.form');
