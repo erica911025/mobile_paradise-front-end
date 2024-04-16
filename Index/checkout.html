@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style_cart.css">
+
+
+    <title>結帳</title>
+
+</head>
+
+<body>
+
+    <!-- header -->
+    <header>
+
+        <!-- header左半部(logo/nav) -->
+        <div div class="header">
+            <a href="./Index.html">
+                <img src="image/logo.png" style="width: 150px; height: 60px; margin-right: 30px;">
+            </a>           
+        
+        <div class="nav_main" >
+                <div class="nav">
+                    <a href="./Index.html">
+                        <img src="image/icon_home.png" >
+                        <p>首 頁</p>
+                    </a>                        
+                </div>
+                <div class="nav">
+                    <a href="./product_all.html">
+                    <img src="image/icon_touch.png" >
+                        <p1>商品一覽</p1>  
+                    </a>                        
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 右半部(line/購物車/會員) -->
+        <div div class="header">
+            <div class="nav_main">
+                <div class="nav2">
+                    <a href="https://lin.ee/HgVNDFW"><img src="image/icon_line.png" ></a>
+                </div>
+                <div class="nav2">
+                    <a href="./cart.html"><img src="image/icon_cart.png" ></a>
+                </div>
+                <div class="nav2">
+                    <a href="./order.html"><img src="image/user.png" ></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- 路徑 -->
+    <div class="path">
+        <a href="./Index.html" >首頁</a>
+        <p> > </p>
+        <a href="./cart.html" >購物車</a>        
+        <p> > </p>
+        <a href="./checkout.html" >結帳</a>
+    </div>
+
+    <!-- 購物車內容 -->
+    <div id="main">
+
+            <div class="main_title">
+                <img src="image/icon_dots.png" >
+                <p>購買商品</p>
+                <img src="image/icon_dots.png" >
+            </div>
+
+            <div class="main">
+
+                <div class="content">
+                    <p>品名：Apple iPhone 15 Pro Max</p>
+                    <p>規格：256GB / 白色鈦金屬</p>
+                    <p>數量：1</p>
+                    <p>單價：$39,900</p>
+                </div>
+                <div class="content">
+                    <p>品名：HTC U23</p>
+                    <p>規格：128G / 羅蘭紫</p>
+                    <p>數量：2</p>
+                    <p>單價：$8,790</p>
+                </div>
+
+                <h2>運費：$0</h2>
+                <h2>總計：$57,480</h2>
+
+            </div>           
+
+    </div>
+
+    <!-- 會員資料內容 -->
+    <form action="./order.html">
+
+        <div id="main">
+            
+            <div class="main_title">
+                <img src="image/icon_dots.png" >
+                <p>會員資料</p>
+                <img src="image/icon_dots.png" >
+            </div>
+
+            <div class="main">
+
+                <div class="user_content">
+                    <p>會員姓名：王小明</p>
+                    <p>電話號碼：0909123456</p>
+                    <p>電子信箱：123456@gmail.com</p>
+                    <p>會員地址： <input type="text" placeholder="請輸入地址" class="text">  </p>
+                </div>
+            </div>           
+
+        </div>
+
+        <input type="submit" value="送出訂單" id="checkout_button">
+        
+    </form>
+
+    <!-- footer -->
+    <footer >
+        <p>@2024手機樂園股份有限公司版權所有</p>
+    </footer>
+    
+    <script src="./js/header.js"></script>
+</body>
+
+</html>

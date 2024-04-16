@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style_product.css">
+
+
+    <title>商品</title>
+
+</head>
+
+<body>
+
+    <!-- 回到頂部 -->
+    <div id="t"></div>
+    <div id="top">
+        <a href="#t"><img src="image/top.png" ></a>
+    </div>
+
+    <!-- header -->
+    <header>
+
+        <!-- header左半部(logo/nav) -->
+        <div div class="header">
+            <a href="./Index.html">
+                <img src="image/logo.png" style="width: 150px; height: 60px; margin-right: 30px;">
+            </a>           
+        
+        <div class="nav_main" >
+                <div class="nav">
+                    <a href="./Index.html">
+                        <img src="image/icon_home.png" >
+                        <p>首 頁</p>
+                    </a>                        
+                </div>
+                <div class="nav">
+                    <a href="./product_all.html">
+                    <img src="image/icon_touch.png" >
+                        <p1>商品一覽</p1>  
+                    </a>                        
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 右半部(line/購物車/會員) -->
+        <div div class="header">
+            <div class="nav_main">
+                <div class="nav2">
+                    <a href="https://lin.ee/HgVNDFW"><img src="image/icon_line.png" ></a>
+                </div>
+                <div class="nav2">
+                    <a href="./cart.html"><img src="image/icon_cart.png" ></a>
+            </div>
+                <div class="nav2">
+                    <a href="./login.html">登入</a>
+                </div>
+                <div class="nav2">
+                    <a href="./register.html">註冊</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- 路徑 -->
+    <div class="path">
+            <a href="./Index.html" >首頁</a>
+            <p> > </p>
+            <a href="./product_all.html" >商品一覽</a>
+            <p> > </p>
+            <a href="./product_all.html" >APPLE</a>
+            <p> > </p>
+            <a href="" >iPhone15 Pro Max</a>
+    </div>
+
+
+    <!-- 商品概觀/加入購物車 -->
+    <div id="main">
+
+        <!-- 商品概觀 -->
+        <div>
+            <img src="image/product1.png" style="width: 100%; height: auto;">
+        </div>
+
+        <!-- 加入購物車 -->
+        <div id="cart">
+            
+            <div>
+              <h1>【Apple】</h1>
+              <h1 style="padding: 10px;"> iPhone 15 PRO MAX</h1>  
+            </div>
+
+            <div>
+                <h4>【商品規格】</h4>
+            </div>
+
+            <form action="">
+                <div id="choice">
+                    <p>顏色</p>
+                        <div id="radio">
+                            <label><input type="radio" name="color" value="黑" checked="checked"><span class="round button">黑</span></label>
+                            <label><input type="radio" name="color" value="白"><span class="round button">白</span></label>
+                            <label><input type="radio" name="color" value="藍"><span class="round button">藍</span></label>
+                            <label><input type="radio" name="color" value="灰"><span class="round button">灰</span></label>
+                        </div>
+                    <p>儲存空間</p>
+                        <div id="radio">
+                            <label><input type="radio" name="label" value="256GB" checked="checked"><span class="round button">256GB</span></label>
+                            <label><input type="radio" name="label" value="512GB"><span class="round button">512GB</span></label>
+                            <label><input type="radio" name="label" value="1TB"><span class="round button">1TB</span></label>
+                        </div>
+                    <p>數量</p>
+                        <div>
+                            <div class="numbox">
+                                <button class="min" type="button" onclick="opera('val', false);"> - </button>
+                                <input class="num" type="number" id="val" value="1"/>
+                                <button class="plus" type="button" onclick="opera('val', true);"> + </button>
+                            </div>
+                
+                            <script type="text/javascript">
+                                function opera(x, y) {
+                                    var rs = new Number(document.getElementById(x).value);
+                                    
+                                    if (y) {
+                                        document.getElementById(x).value = rs + 1;
+                                    } else if( rs >1) {
+                                        document.getElementById(x).value = rs - 1;
+                                    }
+                                    
+                                }
+                            </script>
+                        </div> 
+                </div>                
+
+                <div id="price">
+                    <h2>價格：</h2>
+                    <h3>$39900</h3>
+                    <input type="submit" value="加入購物車" id="submit">
+                </div>    
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- 產品介紹 -->
+    <div class="introduce">
+
+        <div class="introduce_title">
+            <img src="image/icon_dots.png" >
+            <p>商品介紹</p>
+            <img src="image/icon_dots.png" >
+        </div>
+
+        <div id="introduce_photo">
+            <img src="image/introduce1.png" >
+            <img src="image/introduce2.png" >
+        </div>
+
+    </div>
+
+    <!-- 詳細規格 -->
+    <div class="introduce">
+
+        <div class="introduce_title">
+            <img src="image/icon_dots.png" >
+            <p>詳細規格</p>
+            <img src="image/icon_dots.png" >
+        </div>
+
+        <div id="detailed">
+            <p>
+                <h3>6.7 吋 OLED 顯示器</h3><br>
+                Apple iPhone 15 Pro Max 256GB 配置 6.7 吋 2,796 x 1,290pixels 解析度超 Retina XDR 顯示器，搭載 OLED 螢幕面板，擁有最高 2,000nits 螢幕峰值亮度；具備 ProMotion 技術，支援最高達 120Hz 自動適應更新頻率。延續「動態島」挖孔螢幕設計，不僅整合前鏡頭與 Face ID 功能，還具備「顯示通知」功能，可即時查看手機應用資訊。<br><br>
+                <h3>動作按鈕</h3><br>
+                Apple iPhone 15 Pro Max 256GB 正面採用超瓷晶盾面板，機身首度選用鈦金屬材質，結合獨特工藝的奈米級紋理設計，不僅加強機身防護效果，也提高手持的握感表現；擁有 IP68 防塵防水等級，滿足日常保護力。移除撥動式開關的靜音鍵，新增「動作按鈕」配置，支援多項自定義功能，讓手機更加靈活實用。<br><br>
+                <h3>A17 Pro 仿生晶片</h3><br>
+                Apple iPhone 15 Pro Max 256GB 首度搭載 3 奈米製程的 A17 Pro 仿生晶片，具備 16 核心神經網路引擎，擁有 6 核心 CPU (2 個效能核心與 4 個節能核心) 及 6 核心 GPU，且 GPU 的峰值性能較前代提升 20%、CPU 提升 10%。支援硬體加速光線追蹤技術，比起軟體執行光線追蹤相比，速度最高可達四倍。<br><br>
+                <h3>USB-C 連接埠</h3><br>Apple iPhone 15 Pro Max 256GB 運行 iOS 17 作業系統，支援 5G 上網、eSIM 服務。首度採用 USB-C 連接埠設計，支援 DisplayPort、USB 3，傳輸速度最高可達 10Gb/s。提供 SOS 緊急聯絡功能、衛星請求道路救援服務。內建充電式鋰離子電池，支援 15W MagSafe 無線充電、7.5W Qi 無線充電。<br><br>
+                <h3>4,800 萬畫素三鏡頭</h3><br>
+                Apple iPhone 15 Pro Max 256GB 後置 4,800 萬畫素主鏡頭 + 1,200 萬畫素超廣角鏡頭 + 1,200 萬畫素望遠鏡頭，提供多種焦距模式，具備 5 倍光學變焦放大，2 倍光學變焦縮小，10 倍光學變焦範圍，最高可達 25 倍數位變焦；支援人像自動偵測模式、空間影片拍攝功能。前置 1,200 萬畫素原深感測相機，低光源攝影表現再度升級。 
+        </div>
+
+    </div>
+
+
+    <!-- Q&A -->
+    <div class="introduce">
+
+        <div class="introduce_title">
+            <img src="image/icon_dots.png" >
+            <p>Q&A</p>
+            <img src="image/icon_dots.png" >
+        </div>
+
+        <div id="Q_A">
+
+            <div id="create">
+
+               <div id="create_title">
+                    <img src="image/pen.png" id="logo" style="width: 40px; height: 40px; margin:0px 10px;">
+                    <h3>新增提問留言</h3>
+                </div>       
+
+                <form>
+                    <textarea name="mytext" rows="5" cols="40" id="create_text" placeholder="請輸入提問內容"></textarea>
+                    <input type="submit" value="送出留言">
+                </form>
+                
+
+            </div>     
+            
+            <div id="allQA_title">
+                <img src="image/Line_L.png" >
+                <p style="padding: 10px 10px;">所有留言</p>
+                <img src="image/Line_R.png" >
+            </div>
+
+            <div>
+
+                <div class="content">
+                    <p>會員帳號：</p>
+                    <p>提問內容：</p>
+                    <p>提問時間：</p>
+                    <p>回覆內容：</p>
+                    <p>回覆時間：</p> 
+                </div>
+                <div class="content">
+                    <p>會員帳號：</p>
+                    <p>提問內容：</p>
+                    <p>提問時間：</p>
+                    <p>回覆內容：</p>
+                    <p>回覆時間：</p> 
+                </div>
+                <div class="content">
+                    <p>會員帳號：</p>
+                    <p>提問內容：</p>
+                    <p>提問時間：</p>
+                    <p>回覆內容：</p>
+                    <p>回覆時間：</p> 
+                </div>               
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- footer -->
+    <footer>
+        <p>@2024手機樂園股份有限公司版權所有</p>
+    </footer>
+
+    <script src="./js/header.js"></script>
+</body>
+
+</html>
