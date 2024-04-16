@@ -1,4 +1,4 @@
- 
+ 123
 
  const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 
