@@ -1,6 +1,4 @@
- 
-
- const url = "http://localhost:5193/api/Cart/Profile"; 
+const url = "http://localhost:5193/api/Cart/Profile"; 
 
 
 fetch(url,{credentials: 'include'})
@@ -19,7 +17,8 @@ fetch(url,{credentials: 'include'})
     const cellphoneElement = document.getElementById('Cellphone');
     const emailElement = document.getElementById('Email');
 
-    accountElement.textContent = data.account;
+    
+    accountElement.textContent = data.account1;
     nameElement.textContent = data.name;
     cellphoneElement.textContent = data.cellphone;
     emailElement.textContent = data.email;

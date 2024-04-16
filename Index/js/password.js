@@ -31,6 +31,7 @@ document.getElementById('ChangePasswordForm').addEventListener('submit', functio
                 console.log(data);
                 // 可以在這裡添加一些反饋給使用者的動作，例如顯示註冊成功訊息或導向其他頁面
                 alert('修改密碼成功！');
+                location.reload();
             })
             .catch(error => {
                 // 處理錯誤
