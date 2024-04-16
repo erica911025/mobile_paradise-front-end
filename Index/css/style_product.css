@@ -373,6 +373,10 @@ a{
         color:#556d82;
     }
 
+    .Brand{
+        display: flex;
+    }
+
 /*#endregion*/
 
 
