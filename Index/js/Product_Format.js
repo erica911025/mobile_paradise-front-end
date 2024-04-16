@@ -32,9 +32,6 @@ fetch(url, { credentials: 'include' })
       }
     });
 
-    // 更新數量
-    const quantityInput = document.getElementById('val');
-    quantityInput.value = data.num;
 
     // 更新商品品牌
     const brandElement = document.getElementById('Brand');
@@ -46,12 +43,27 @@ fetch(url, { credentials: 'include' })
 
     brandElement.href = `./product_brand.html?brand=${encodeURIComponent(data.brand)}`;
 
+
+    const brand2Element = document.getElementById('Brand2');
+    if (data.Message && data.Message.length > 0) {
+      brand2Element.textContent = data.Message[0].Brand;
+    } else {
+      brand2Element.textContent = 'No Brand Available';
+    }
+
     // 更新商品名稱
     const ItemNameElement = document.getElementById('ItemName');
     if (data.Message && data.Message.length > 0) {
       ItemNameElement.textContent = data.Message[0].ItemName;
     } else {
       ItemNameElement.textContent = 'No Brand Available';
+    }
+
+    const ItemName2Element = document.getElementById('ItemName2');
+    if (data.Message && data.Message.length > 0) {
+      ItemName2Element.textContent = data.Message[0].ItemName;
+    } else {
+      ItemName2Element.textContent = 'No Brand Available';
     }
 
     // 將商品規格顯示在對應的元素中
@@ -62,7 +74,6 @@ fetch(url, { credentials: 'include' })
 
     colorElement.textContent = data.color;
     spaceElement.textContent = data.space;
-    itemNumElement.textContent = data.itemNum;
     itemPriceElement.textContent = data.itemPrice;
 
   })
