@@ -1,4 +1,3 @@
- 123
 
  const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 
@@ -39,13 +38,21 @@ fetch(url, { credentials: 'include' })
 
     // 更新商品品牌
     const brandElement = document.getElementById('Brand');
-    brandElement.textContent = data.brand;
+    if (data.Message && data.Message.length > 0) {
+      brandElement.textContent = data.Message[0].Brand;
+    } else {
+      brandElement.textContent = 'No Brand Available';
+    }
+
     brandElement.href = `./product_brand.html?brand=${encodeURIComponent(data.brand)}`;
 
     // 更新商品名稱
-    const itemNameElement = document.getElementById('ItemName');
-    itemNameElement.textContent = data.itemName;
-    itemNameElement.href = `./product_detail.html?id=${encodeURIComponent(data.itemId)}`;
+    const ItemNameElement = document.getElementById('ItemName');
+    if (data.Message && data.Message.length > 0) {
+      ItemNameElement.textContent = data.Message[0].ItemName;
+    } else {
+      ItemNameElement.textContent = 'No Brand Available';
+    }
 
     // 將商品規格顯示在對應的元素中
     const colorElement = document.getElementById('Color');
