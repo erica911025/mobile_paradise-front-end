@@ -17,10 +17,7 @@ fetch(url,{credentials: 'include'})
     const cellphoneElement = document.getElementById('Cellphone');
     const emailElement = document.getElementById('Email');
 
-<<<<<<< HEAD
     
-=======
->>>>>>> 86de3e2a0ea3945ea13494cf5153beff4bb64daa
     accountElement.textContent = data.account1;
     nameElement.textContent = data.name;
     cellphoneElement.textContent = data.cellphone;
