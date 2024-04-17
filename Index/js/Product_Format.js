@@ -7,13 +7,13 @@ fetch(url, { credentials: 'include' })
     if (!response.ok) {
       throw new Error('網路錯誤，無法獲取資料');
     }
-    return response.json(); // 解析 JSON 格式的回傳資料
+    return response.json();
   })
   .then(data => {
     console.log(data); 
 
 
-    // 更新商品品牌
+    // 商品品牌
     const brandElement = document.getElementById('Brand');
     if (data.Message && data.Message.length > 0) {
       brandElement.textContent = data.Message[0].Brand;
@@ -31,7 +31,7 @@ fetch(url, { credentials: 'include' })
       brand2Element.textContent = 'No Brand Available';
     }
 
-    // 更新商品名稱
+    // 商品名稱
     const ItemNameElement = document.getElementById('ItemName');
     if (data.Message && data.Message.length > 0) {
       ItemNameElement.textContent = data.Message[0].ItemName;
@@ -46,7 +46,7 @@ fetch(url, { credentials: 'include' })
       ItemName2Element.textContent = 'No Brand Available';
     }
 
-    // 更新商品名稱價格
+    // 商品價格
     const ItemPriceElement = document.getElementById('ItemPrice');
     if (data.Message && data.Message.length > 0) {
       ItemPriceElement.textContent = data.Message[0].ItemPrice;
@@ -56,7 +56,7 @@ fetch(url, { credentials: 'include' })
     }
     
 
-     // 更新顏色選擇
+     // 顏色
      const colorOptionsElement = document.getElementById('colorOptions');
      if (data.Message && data.Message.length > 0) {
        const Colors = data.Message.map(item => item.Color); //map可以抓取所有資料儲存於Colors陣列
@@ -75,7 +75,7 @@ fetch(url, { credentials: 'include' })
        colorOptionsElement.textContent = 'No Colors Available';
      }
 
-      // 儲存空間選擇
+      // 儲存空間
       const SpaceOptionsElement = document.getElementById('SpaceOptions');
       if (data.Message && data.Message.length > 0) {
         const Spaces = data.Message.map(item => item.Space); //map可以抓取所有資料儲存於Spaces陣列
@@ -92,18 +92,6 @@ fetch(url, { credentials: 'include' })
       } else {
         SpaceOptionsElement.textContent = 'No Colors Available';
       }
-     
-
-    // 將商品規格顯示在對應的元素中
-    
-    const colorElement = document.getElementById('Color');
-    const spaceElement = document.getElementById('Space');
-    const itemNumElement = document.getElementById('ItemNum');
-    const itemPriceElement = document.getElementById('ItemPrice');
-
-    colorElement.textContent = data.color;
-    spaceElement.textContent = data.space;
-    itemPriceElement.textContent = data.itemPrice;
 
   })
   .catch(error => {
