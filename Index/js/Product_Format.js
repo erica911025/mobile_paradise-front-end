@@ -74,6 +74,25 @@ fetch(url, { credentials: 'include' })
        colorOptionsElement.textContent = 'No Colors Available';
      }
 
+          // 更新顏色選擇
+          const SpaceOptionsElement = document.getElementById('SpaceOptions');
+          if (data.Message && data.Message.length > 0) {
+            const Spaces = data.Message.map(item => item.Space); //map可以抓取所有資料儲存於Colors陣列
+      
+            Spaces.forEach(Space => {
+              const label = document.createElement('label'); //創建顏色容器
+              label.id = Space.toLowerCase(); // 將顏色轉換為小寫作為 label 的 id
+              label.innerHTML = `
+                <input type="radio" name="Space"  checked="checked">
+                <span class="round button">${Space}</span>
+              `;
+              SpaceOptionsElement.appendChild(label);
+            });
+          } else {
+            SpaceOptionsElement.textContent = 'No Colors Available';
+          }
+     
+
     // 將商品規格顯示在對應的元素中
     
     const colorElement = document.getElementById('Color');
