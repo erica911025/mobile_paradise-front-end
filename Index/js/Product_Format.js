@@ -61,36 +61,37 @@ fetch(url, { credentials: 'include' })
      if (data.Message && data.Message.length > 0) {
        const Colors = data.Message.map(item => item.Color); //map可以抓取所有資料儲存於Colors陣列
  
-       Colors.forEach(Color => {
-         const label = document.createElement('label'); //創建顏色容器
-         label.id = Color.toLowerCase(); // 將顏色轉換為小寫作為 label 的 id
-         label.innerHTML = `
-           <input type="radio" name="color"  checked="checked">
-           <span class="round button">${Color}</span>
-         `;
-         colorOptionsElement.appendChild(label);
-       });
+       Colors.forEach((Color, first) => {
+        const label = document.createElement('label'); //創建顏色容器
+        label.id = Color.toLowerCase(); // 將顏色轉換為小寫作為 label 的 id
+        const isChecked = first === 0 ? 'checked="checked"' : ''; // 判斷是否是第一個颜色，是的話會變成預設值
+        label.innerHTML = `
+          <input type="radio" name="color" ${isChecked}> <!-- 这里添加了 ${isChecked} -->
+          <span class="round button">${Color}</span>
+        `;
+        colorOptionsElement.appendChild(label);
+      });
      } else {
        colorOptionsElement.textContent = 'No Colors Available';
      }
 
-          // 更新顏色選擇
-          const SpaceOptionsElement = document.getElementById('SpaceOptions');
-          if (data.Message && data.Message.length > 0) {
-            const Spaces = data.Message.map(item => item.Space); //map可以抓取所有資料儲存於Colors陣列
-      
-            Spaces.forEach(Space => {
-              const label = document.createElement('label'); //創建顏色容器
-              label.id = Space.toLowerCase(); // 將顏色轉換為小寫作為 label 的 id
-              label.innerHTML = `
-                <input type="radio" name="Space"  checked="checked">
-                <span class="round button">${Space}</span>
-              `;
-              SpaceOptionsElement.appendChild(label);
-            });
-          } else {
-            SpaceOptionsElement.textContent = 'No Colors Available';
-          }
+      // 儲存空間選擇
+      const SpaceOptionsElement = document.getElementById('SpaceOptions');
+      if (data.Message && data.Message.length > 0) {
+        const Spaces = data.Message.map(item => item.Space); //map可以抓取所有資料儲存於Spaces陣列
+        Spaces.forEach((Space, first) => {
+          const label = document.createElement('label'); //創建儲存空間容器
+          label.id = Space.toLowerCase(); // 將儲存空間轉換為小寫作為 label 的 id
+          const isChecked = first === 0 ? 'checked="checked"' : ''; // 判斷是否是第一個空間容器，是的話會變成預設值
+          label.innerHTML = `
+            <input type="radio" name="Space" ${isChecked}>
+            <span class="round button">${Space}</span>
+          `;
+          SpaceOptionsElement.appendChild(label);
+        });
+      } else {
+        SpaceOptionsElement.textContent = 'No Colors Available';
+      }
      
 
     // 將商品規格顯示在對應的元素中
