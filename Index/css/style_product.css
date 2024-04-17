@@ -283,6 +283,7 @@ a{
         color: #a29b7a;
         font-size: 30px;
         border-bottom:solid #a2a07a 1.5px;
+        display: flex;
     }
 
     #submit{
