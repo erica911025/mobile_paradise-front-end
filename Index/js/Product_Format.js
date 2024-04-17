@@ -1,5 +1,5 @@
 
- const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
+const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 
 
 fetch(url, { credentials: 'include' })
