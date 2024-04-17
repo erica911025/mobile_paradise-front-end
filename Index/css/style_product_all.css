@@ -347,6 +347,7 @@
 /* 右半部(產品內容) *//*#region*/
 
     #product{
+        width: 170%;
         padding:10px 40px;
         display: flex;
         flex-direction: column;
