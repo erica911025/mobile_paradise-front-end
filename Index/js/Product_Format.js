@@ -56,7 +56,7 @@ fetch(url, { credentials: 'include' })
     }
     
 
-     // 顏色
+     // 商品顏色
      const colorOptionsElement = document.getElementById('colorOptions');
      if (data.Message && data.Message.length > 0) {
        const Colors = data.Message.map(item => item.Color); //map可以抓取所有資料儲存於Colors陣列
@@ -84,7 +84,7 @@ fetch(url, { credentials: 'include' })
           label.id = Space.toLowerCase(); // 將儲存空間轉換為小寫作為 label 的 id
           const isChecked = first === 0 ? 'checked="checked"' : ''; // 判斷是否是第一個空間容器，是的話會變成預設值
           label.innerHTML = `
-            <input type="radio" name="Space" ${isChecked}>
+            <input type="radio" name="Space" value="${Space}" ${isChecked}>
             <span class="round button">${Space}</span>
           `;
           SpaceOptionsElement.appendChild(label);
@@ -93,7 +93,25 @@ fetch(url, { credentials: 'include' })
         SpaceOptionsElement.textContent = 'No Colors Available';
       }
 
+
+      //商品單價
+      const SpaceOptions = document.getElementsByName('Space'); // 所有儲存空間選項
+      SpaceOptions.forEach(option => {
+        option.addEventListener('change', function() {
+          const selectedSpace = this.value; // 獲取所選的儲存空間
+          const itemPrice = parseFloat(data.Message.find(item => item.Space === selectedSpace).ItemPrice); // 找到所選儲存空間的價格
+      
+          const ItemPriceElement = document.getElementById('ItemPrice');
+          ItemPriceElement.textContent = itemPrice; // 更新單價顯示
+        });
+      });
+      
+
+
+
   })
+
+
   .catch(error => {
     console.error('發生錯誤:', error);
   });
