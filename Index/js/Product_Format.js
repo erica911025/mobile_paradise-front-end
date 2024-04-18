@@ -1,5 +1,254 @@
+async function getProductInfo(ItemId){
+  try{
+    const response = 
+    await fetch(`http://localhost:5193/api/Paradise/ProductInfo?ItemId=${ItemId}`);
+    if(!response.ok){
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    if(data.Status === 200 && data.Message.length>0){
+      return data.Message;
+    }else{
+      throw new Error('Product info not found')
+    }
+  }catch(error){
+    console.error('Failed to fetch product info:',error);
+    return null;
+  }
+}
 
- const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
+async function generate(ItemId){
+  try{
+    const productInfo = await getProductInfo(ItemId);
+    console.log('Product info:',productInfo);
+    generateColorOptions(productInfo);
+    generateInfo(productInfo);
+    generateQA(ItemId);
+  }catch(error){
+    console.error('Failed to fetch product info:',error);
+  }
+}
+
+async function generateInfo(productInfo){
+  try{
+    const pictureDiv = document.querySelector('#main div:nth-child(1)')
+    const picture = document.createElement('img');
+    picture.src = `image/${productInfo[0].ItemImg}`;
+    picture.style.width = '100%';
+    picture.style.height = 'auto';
+    pictureDiv.appendChild(picture);
+    const productBrand = document.getElementById('Brand2');
+    productBrand.textContent = productInfo[0].Brand;
+    const productName = document.getElementById('ItemName2');
+    productName.textContent = productInfo[0].ItemName;
+    const introduce_photo = document.getElementById('introduce_photo');
+    productInfo.forEach((item, index) => {
+      if(index != 0){
+        const img = document.createElement('img');
+        img.src = `image/${item.ItemImg}`;
+        introduce_photo.appendChild(img)
+      }
+    });
+    const introduce_detailed = document.getElementById('detailed');
+    introduce_detailed.textContent = productInfo[0].Instruction;
+  }catch(error){
+    console.error('Feil',error);
+  }
+}
+
+async function generateColorOptions(productInfo){
+    const colorOptionsDiv = document.getElementById('colorOptions');
+    colorOptionsDiv.innerHTML = '';
+    const colors = new Set();
+    productInfo.forEach(item => {
+      colors.add(item.Color);
+    });
+    Array.from(colors).forEach((color, index) => {
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = "radio";
+      input.name = color;
+      const span = document.createElement('span');
+      span.className = "round button";
+      span.textContent = color;
+      label.dataset.color = color;
+      label.classList.add('colorLabel');
+      if(index === 0){
+        label.classList.add('selected')
+        input.checked = true;
+      }
+      label.addEventListener('click', async function() {
+        const selectedColor = this.dataset.color;
+        const spaceOptionsDiv = document.getElementById('SpaceOptions');
+        spaceOptionsDiv.innerHTML = '';
+        productInfo.forEach((info) => {
+            if (info.Color === selectedColor) {
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+                input.type = "radio";
+                input.name = 'Space';
+                input.value = info.Space; 
+                const span = document.createElement('span')
+                span.className = "round button";
+                span.textContent = info.Space;
+                label.dataset.Space = info.Space;
+                label.classList.add('SpaceLabel');
+                label.addEventListener('click', async function() {
+                    const selectedSpace = this.dataset.Space;
+                    const format = productInfo.find(info => info.Color === selectedColor && info.Space === selectedSpace);
+                    if (format) {
+                        document.getElementById('ItemPrice').textContent = format.ItemPrice;
+                        FormatId = format.FormatId;
+                        console.log(ItemId,FormatId);
+                    }
+                    spaceOptionsDiv.querySelectorAll('.SapceLabel').forEach(btn => {
+                        btn.classList.remove('selected');
+                        const input = btn.querySelector('input').checked = false;
+                    });
+                    this.classList.add('selected');
+                    const input = this.querySelector('input').checked = true;
+                });
+                spaceOptionsDiv.appendChild(label);
+                label.appendChild(input);
+                label.appendChild(span);
+            }
+        });
+        document.getElementById('ItemPrice').textContent = '';
+        document.querySelectorAll('.colorLabel').forEach(btn => {
+            btn.classList.remove('seleted');
+            const input = btn.querySelector('input').checked = false;
+        });
+        this.classList.add('selected');
+        const input = this.querySelector('input').checked = true;
+        const inputs = this.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.checked = true;
+        });
+    });
+    
+      colorOptionsDiv.appendChild(label);
+      label.appendChild(input);
+      label.appendChild(span);
+    });
+}
+
+async function generateQA(ItemId){
+  const QA = 
+  await fetch(`http://localhost:5193/api/Paradise/QA/${ItemId}`,{
+    method: 'GET',
+    headers:{
+      'Content-Type' :'application/json'
+    },
+    credentials: 'include'
+  })
+  .then(response =>{
+    if(!response.ok){
+      throw new Error('錯誤')
+    }
+    return response.json();
+  })
+  .then(data => {
+    const Div = document.querySelector('#Q_A div:nth-child(3)');
+    data.Message.forEach(item =>{
+      const contentDiv = document.createElement('div');
+      contentDiv.innerHTML = '';
+      contentDiv.className = 'content';
+      const Account = document.createElement('p');
+      const QContent = document.createElement('p');
+      const QCreateTime = document.createElement('p');
+      const AContent = document.createElement('p');
+      const ACreateTime = document.createElement('p');
+      Account.textContent = '會員帳號： ' +  item.Account;
+      QContent.textContent = '提問內容： ' +  item.Content;
+      QCreateTime.textContent = '提問時間： ' +  item.CreateTime;
+      if(item.Reply != null){
+        AContent.textContent = '回覆內容： ' +  item.Reply;
+        ACreateTime.textContent = '回覆時間： ' +  item.ReplyTime;
+      }
+      Div.appendChild(contentDiv);
+      contentDiv.appendChild(Account);
+      contentDiv.appendChild(QContent);
+      contentDiv.appendChild(QCreateTime);
+      contentDiv.appendChild(AContent);
+      contentDiv.appendChild(ACreateTime);
+      
+    })
+    console.log(data);
+  })
+  .catch(error=>{
+    console.error('錯誤', data.Message);
+    alert('失敗');
+  })
+}
+
+const form = document.getElementById('AddCartForm')
+form.addEventListener('submit',function(event){
+  event.preventDefault();
+  const AddItemNum = document.getElementById('val').value;
+
+  fetch('http://localhost:5193/api/Cart', {
+    method: 'POST',
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({ItemId: ItemId, FormatId: FormatId, ItemNum: AddItemNum}),
+    credentials: 'include'
+  })
+  .then(response =>{
+    if(!response.ok){
+      throw new Error('Error')
+    }
+    return response.json();
+  })
+  .then(data=>{
+    var status = data.Status;
+    if(status === 200){
+      alert('加入成功')
+      location.reload();
+    }else{
+      console.error('加入失敗', data.Message);
+      alert('失敗');
+    }
+  })
+  .catch(error => {
+    console.error('加入失敗', data.Message);
+    alert('失敗');
+  })
+
+});
+
+const QA = document.getElementById('QAForm');
+QA.addEventListener('submit', function(){
+    const formData = new FormData();
+    formData.append('content',document.getElementById('create_text').value);
+    fetch(`http://localhost:5193/api/Paradise/${ItemId}`,{
+      method: 'POST',
+      headers: {},
+      body: formData,
+      credentials: 'include'
+    })
+    .then(response =>{
+      if(!response.ok){
+         throw new Error('error');
+      }
+       return response.json();
+    })
+    .catch(error=>{
+      console.error('提問失敗');
+      alert('失敗');
+    })
+
+
+});
+
+let FormatId = -99;
+let ItemId = -99;
+
+window.onload = function(){
+  ItemId = 6;
+  generate(ItemId);
+ }
+ /*const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 
 
 fetch(url, { credentials: 'include' })
@@ -114,6 +363,6 @@ fetch(url, { credentials: 'include' })
 
   .catch(error => {
     console.error('發生錯誤:', error);
-  });
+  });*/
 
 
