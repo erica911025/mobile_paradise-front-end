@@ -1,8 +1,7 @@
 document.getElementById('ChangePasswordForm').addEventListener('submit', function(event) {
 
     event.preventDefault(); 
-
-   const formData = new FormData(this); 
+    const formData = new FormData(this); 
 
     const jsonData = {};
 

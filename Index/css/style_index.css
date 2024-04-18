@@ -239,15 +239,28 @@
         font-weight: bold;
         color: #a06761;
     }
+    
+    .ItemPriceMin{
+        display: flex;
+    }
 
     .product {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 170px;
     }
 
     .product img{
         width: 90%;
+    }
+
+    .text{
+        width: 80%;
+    }
+
+    .text h4{
+        padding-bottom: 5px;
     }
 
     .next{
@@ -281,6 +294,10 @@
     .more a:hover{
         background-color: #97a7c5;
         color: white;
+    }
+
+    .hot{
+        display: flex;
     }
 
 /*#endregion*/
