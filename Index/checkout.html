@@ -13,8 +13,8 @@
 
 <body>
 
-    <!-- header -->
-    <header>
+     <!-- header -->
+     <header>
 
         <!-- header左半部(logo/nav) -->
         <div div class="header">
@@ -47,9 +47,12 @@
                 </div>
                 <div class="nav2">
                     <a href="./cart.html"><img src="image/icon_cart.png" ></a>
+            </div>
+                <div class="nav2">
+                    <a href="./login.html">登入</a>
                 </div>
                 <div class="nav2">
-                    <a href="./order.html"><img src="image/user.png" ></a>
+                    <a href="./register.html">註冊</a>
                 </div>
             </div>
         </div>
@@ -76,17 +79,7 @@
 
             <div class="main">
 
-                <div class="content">
-                    <p>品名：Apple iPhone 15 Pro Max</p>
-                    <p>規格：256GB / 白色鈦金屬</p>
-                    <p>數量：1</p>
-                    <p>單價：$39,900</p>
-                </div>
-                <div class="content">
-                    <p>品名：HTC U23</p>
-                    <p>規格：128G / 羅蘭紫</p>
-                    <p>數量：2</p>
-                    <p>單價：$8,790</p>
+                <div class="item">>
                 </div>
 
                 <h2>運費：$0</h2>
@@ -110,10 +103,17 @@
             <div class="main">
 
                 <div class="user_content">
-                    <p>會員姓名：王小明</p>
-                    <p>電話號碼：0909123456</p>
-                    <p>電子信箱：123456@gmail.com</p>
-                    <p>會員地址： <input type="text" placeholder="請輸入地址" class="text">  </p>
+                    <div class="user">
+                        <p >會員姓名：<div id="Name"></div></p>
+                    </div>
+                    <div class="user">
+                        <p class="user">電話號碼：<div id="Cellphone"></div></p>
+                    </div>
+                    <div class="user">
+                        <p class="user">電子信箱：<div id="Email"></div></p>
+                    </div>
+                    
+                    <p class="user">會員地址： <input type="text" placeholder="請輸入地址" class="text">  </p>
                 </div>
             </div>           
 
@@ -129,6 +129,7 @@
     </footer>
     
     <script src="./js/header.js"></script>
+    <script src="./js/checkout.js"></script>
 </body>
 
 </html>

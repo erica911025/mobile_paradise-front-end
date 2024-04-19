@@ -276,6 +276,10 @@ header{
         color: white;
     }
 
+    .user{
+        display: flex;
+    }
+
 /*#endregion*/
 
 
