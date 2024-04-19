@@ -1,4 +1,4 @@
-const Url="http://localhost:5193/api/Paradise/ProductInfo?ItemId=6";
+const Url="http://localhost:5193/api/Paradise/ProductInfo?ItemId=3";
 
 fetch(Url, { credentials: 'include' })
   .then(response => {
