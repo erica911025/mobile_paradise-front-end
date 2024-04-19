@@ -245,7 +245,8 @@ let FormatId = -99;
 let ItemId = -99;
 
 window.onload = function(){
-  ItemId = 1;
+  const UrlParams = new URLSearchParams(window.location.search);
+  ItemId = UrlParams.get('ItemId');
   generate(ItemId);
  }
  /*const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
