@@ -22,7 +22,7 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
                         <input type="submit" value="查詢" class="button2" data-OrderId="${order.orderId}">
                     </td>
                     <td>
-                        <input type="button" value="完成" class="buttonOK_not">
+                    ${order.orderStatus === "已出貨" ? `<input type="button" value="完成" class="buttonOK" data-OrderId="${order.orderId}">` : `<input type="button" value="完成" class="buttonOK_not" data-OrderId="${order.orderId}">`}
                     </td>                
                 `;
                 tableBody.appendChild(newRow);
@@ -34,7 +34,7 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
         detailButtons.forEach(button => {
 
             button.addEventListener('click', function() {
-                const OrderId = button.dataset.OrderId;
+                const OrderId = button.getAttribute("data-OrderId");
 
                 console.log(OrderId)
                 console.log("123")
@@ -49,6 +49,7 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
                     
                     .then(data => {
                         const modalContent = document.querySelector('.modal-content');
+                        
                         modalContent.innerHTML = `
                             <span class="close">&times;</span>
                             <form>
@@ -56,29 +57,75 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
                                     <h2>訂購商品：</h2>
                                 </div>
                                 <div class="create">
-                                    <div id="field1"><p>品牌：${data[0].brand}</p></div>
-                                    <div id="field2"><p>型號：${data[0].itemName}</p></div>
-                                    <div id="field3"><p>顏色：${data[0].color}</p></div>
-                                    <div id="field4"><p>容量：${data[0].space}</p></div>
+                                    ${data.map(item => `
+                                        <div class="create">
+                                            <div id="field1">◎ 【${item.brand}】  ${item.itemName}  ${item.space}  /  ${item.color} * ${item.itemNum} </p></div>
+                                        </div>
+
+                                    `).join('')}
                                 </div>
                                 <div>
                                     <h2>會員資訊：</h2>
                                 </div>
                                 <div class="create">
-                                    <div id="field5"><p>會員姓名：${data[0].name}</p></div>
-                                    <div id="field6"><p>電話號碼：${data[0].cellphone}</p></div>
-                                    <div id="field7"><p>電子信箱：${data[0].email}</p></div>
-                                    <div id="field8"><p>會員地址：${data[0].address}</p></div>
+                                    <div id="field1"><p> ▸ 會員姓名：${data[0].name}</p></div>
+                                </div>
+                                <div class="create">
+                                    <div id="field1"><p>▸ 電話號碼：${data[0].cellphone}</p></div>
+                                </div>
+                                <div class="create">
+                                    <div id="field1"><p> ▸ 電子信箱：${data[0].email}</p></div>
+                                </div>
+                                <div class="create">
+                                    <div id="field1"><p> ▸會員地址：${data[0].address}</p></div>
                                 </div>
                             </form>
                         `;
                         modal.style.display = "block";
                     })
+
+
+                    
+                    
                     .catch(error => {
                         console.error('發生錯誤:', error.message);
                     });
             });
         });
+
+
+        const detailButtons2 = document.querySelectorAll('.buttonOK');
+
+        detailButtons2.forEach(button => {
+            button.addEventListener('click', function() {
+                const OrderId = button.getAttribute("data-OrderId"); // 抓取data-OrderId
+        
+                console.log(OrderId)
+        
+                fetch("http://localhost:5193/api/Cart/OrderFinish", { 
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: OrderId // 將整數值直接作為請求主體
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('伺服器回應錯誤');
+                    }
+                    return response.json(); 
+                })
+                .then(data => {
+                    console.log(data);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('發生錯誤:', error);
+                });
+            });
+        });
+        
 
     })
     .catch(error => {
