@@ -67,4 +67,34 @@ fetch(url,{credentials: 'include'})
   });
 
 
+document.getElementById('CheckoutForm').addEventListener('submit', function(event) {
+  event.preventDefault(); 
 
+  const address = '"' + document.querySelector('.text[name="address"]').value + '"';
+
+
+  console.log(address);
+  
+  fetch("http://localhost:5193/api/Cart/Order", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'text/plain' 
+      },
+      body: address, 
+      credentials: 'include'
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('伺服器回應錯誤');
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log(data);
+      alert('下單成功');
+      window.location.href = './order.html';
+  })
+  .catch(error => {
+      console.error('發生錯誤:', error);
+  });
+});

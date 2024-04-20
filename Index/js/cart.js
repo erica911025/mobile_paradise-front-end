@@ -1,4 +1,3 @@
-
 fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
     .then(response => {
         if (!response.ok) {
@@ -7,13 +6,11 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
         return response.json();
     })
     .then(data => {
-        const itemContainer = document.querySelector('.item'); 
+        const itemContainer = document.querySelector('.item');
 
-        // 清空之前的內容
         itemContainer.innerHTML = '';
 
         console.log(data);
-
 
         if (data && data.length > 0) {
             data.forEach(item => {
@@ -23,16 +20,48 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                     <p>品名：${item.itemName}</p>
                     <p>規格：${item.space} / ${item.color}</p>
                     <p>數量：${item.itemNum}</p>
-                    <p>單價：${item.itemPrice} <a href=""><img src="image/trash.png" alt=""></a></p>
+                    <p>單價：${item.itemPrice} <a href="" class="delete"><img src="image/trash.png" alt="" class="delete"></a></p> <!-- 修改此行 -->
                 `;
+
+                const deleteButton = itemElement.querySelector('.delete');
+
+                deleteButton.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+
+                    console.log("123");
+
+                    const Id=item.id;
+
+                    console.log(Id);
+                    fetch(`http://localhost:5193/api/Cart`, { 
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ Id: Id}),
+                        credentials: 'include'
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('伺服器回應錯誤');
+                            }
+                            return response.json();
+                        })
+
+                        .then(data => {
+                            console.log("已刪除商品");
+                            alert('已刪除商品');
+                            location.reload();
+                        })
+                        .catch(error => {
+                            console.error('發生錯誤:', error);
+                        });
+                });
+
                 itemContainer.appendChild(itemElement);
             });
         }
-        
-        
-
     })
     .catch(error => {
         console.error('發生錯誤:', error);
     });
-
