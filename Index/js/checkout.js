@@ -78,7 +78,7 @@ document.getElementById('CheckoutForm').addEventListener('submit', function(even
   fetch("http://localhost:5193/api/Cart/Order", {
       method: 'POST',
       headers: {
-          'Content-Type': 'text/plain' 
+          'Content-Type': 'application/json' 
       },
       body: address, 
       credentials: 'include'
