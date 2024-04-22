@@ -160,10 +160,10 @@ async function generateQA(ItemId){
       const ACreateTime = document.createElement('p');
       Account.textContent = '會員帳號： ' +  item.Account;
       QContent.textContent = '提問內容： ' +  item.Content;
-      QCreateTime.textContent = '提問時間： ' +  item.CreateTime;
+      QCreateTime.textContent = '提問時間： ' +  formatDateTime(item.CreateTime);
       if(item.Reply != null){
         AContent.textContent = '回覆內容： ' +  item.Reply;
-        ACreateTime.textContent = '回覆時間： ' +  item.ReplyTime;
+        ACreateTime.textContent = '回覆時間： ' +  formatDateTime(item.ReplyTime);
       }
       Div.appendChild(contentDiv);
       contentDiv.appendChild(Account);
@@ -257,6 +257,20 @@ window.onload = function(){
   ItemId = UrlParams.get('ItemId');
   generate(ItemId);
  }
+
+ // 修改時間格式
+function formatDateTime(dateTimeString) {
+  const dateTime = new Date(dateTimeString); // 解析日期時間字符串
+  const year = dateTime.getFullYear();
+  const month = ('0' + (dateTime.getMonth() + 1)).slice(-2); //.slice(-2)取末兩位的數字
+  const date = ('0' + dateTime.getDate()).slice(-2);
+  const hours = ('0' + dateTime.getHours()).slice(-2);
+  const minutes = ('0' + dateTime.getMinutes()).slice(-2);
+  const seconds = ('0' + dateTime.getSeconds()).slice(-2);
+
+  const formattedDateTime = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+  return formattedDateTime;
+}
  /*const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 
