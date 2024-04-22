@@ -148,11 +148,12 @@ function getProduct(value,sortway,Brand,MaxPrice,MinPrice){
             break;
         case 3:
             show.innerHTML = '';
+            console.log(MaxPrice,MinPrice)
             if (MinPrice != null && MaxPrice != null) {
                 h2.textContent = `${MinPrice}~${MaxPrice}`;
-            } else if (MinPrice != null) {
-                h2.textContent = "50,000以下";
             } else if (MaxPrice != null) {
+                h2.textContent = "50,000以下";
+            } else if (MinPrice != null) {
                 h2.textContent = "40,000以上";
             }
             getProductByPrice(sortway,MaxPrice,MinPrice)
