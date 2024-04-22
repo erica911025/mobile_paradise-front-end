@@ -218,7 +218,8 @@ form.addEventListener('submit',function(event){
 });
 
 const QA = document.getElementById('QAForm');
-QA.addEventListener('submit', function(){
+QA.addEventListener('submit', function(event){
+    event.preventDefault();
     const formData = new FormData();
     formData.append('content',document.getElementById('create_text').value);
     fetch(`http://localhost:5193/api/Paradise/${ItemId}`,{
@@ -232,6 +233,13 @@ QA.addEventListener('submit', function(){
          throw new Error('error');
       }
        return response.json();
+    })
+    .then(data=>{
+      var status = data.Status;
+      if(status === 200){
+        alert('加入成功')
+        location.reload();
+      }
     })
     .catch(error=>{
       console.error('提問失敗');
