@@ -102,7 +102,7 @@ async function getProductByPrice(sortway,MaxPrice,MinPrice){
     })
 }
 
-function ShowProduct(data){
+async function ShowProduct(data){
     const show = document.getElementById('product_show');
     const a = document.createElement('a');
     a.href = `./product.html?ItemId=${data.ItemId}`;
@@ -127,14 +127,15 @@ function ShowProduct(data){
     show.appendChild(a);
 }
 
-function getsort(value,Brand,MaxPrice,MinPrice) {
+async function getsort(value,Brand,MaxPrice,MinPrice) {
     let sortway = sortBtn.value;
     getProduct(value, sortway,Brand,MaxPrice,MinPrice);
 }
 
-function getProduct(value,sortway,Brand,MaxPrice,MinPrice){
+async function getProduct(value,sortway,Brand,MaxPrice,MinPrice){
     const h2 = document.querySelector('#product_title h2');
     const show = document.getElementById('product_show');
+    value = parseInt(value);
     switch(value){
         case 1:
             show.innerHTML = '';
@@ -160,14 +161,14 @@ function getProduct(value,sortway,Brand,MaxPrice,MinPrice){
             break;
         default:
             show.innerHTML = '';
-            h2.textContent = "ALL 所有商品"
+            h2.textContent = "ALL 所有商品";
             getALLProduct(sortway);
             break;
     }
 }
 
 const sortBtn = document.getElementById('sort');
-let value = 0;
+let value;
 function handleSortChange() {
     const show = document.getElementById('product_show');
     show.innerHTML = '';
@@ -176,10 +177,16 @@ function handleSortChange() {
 }
 
 window.onload = function(){
-    const All = document.getElementById('ALLProduct');
-    getsort(value);
+    const UrlParams = new URLSearchParams(window.location.search);
+    value = UrlParams.get('value');
+    Brand = UrlParams.get('brand');
+    let MaxPrice;
+    let MinPrice;
+    getsort(value,Brand,MaxPrice,MinPrice);
     sortBtn.addEventListener('change', handleSortChange);
+    const All = document.getElementById('ALLProduct');
     All.addEventListener('click', function(event){
+        window.scrollTo(0,0);
         sortBtn.removeEventListener('change', handleSortChange);
         sortBtn.addEventListener('change', handleSortChange);
         event.preventDefault();
@@ -188,6 +195,7 @@ window.onload = function(){
     })
     const Hot = document.getElementById('HotProduct');
     Hot.addEventListener('click',function(event){
+        window.scrollTo(0,0);
         sortBtn.removeEventListener('change', handleSortChange);
         sortBtn.addEventListener('change', handleSortChange);
         event.preventDefault();
@@ -197,6 +205,7 @@ window.onload = function(){
     const brandA = document.querySelectorAll('#sidebar_Brand a');
     brandA.forEach(a=>{
         a.addEventListener('click',function(event){
+            window.scrollTo(0,0);
             event.preventDefault();
             const Brand = a.getAttribute('dataset');
             sortBtn.removeEventListener('change', handleSortChange);
@@ -208,9 +217,10 @@ window.onload = function(){
     const PriceDiv = document.querySelectorAll('#sidebar_Price a');
     PriceDiv.forEach(a=>{
         a.addEventListener('click',function(event){
+            window.scrollTo(0,0);
             event.preventDefault();
-            const MaxPrice = a.getAttribute('data-MaxPrice');
-            const MinPrice = a.getAttribute('data-MinPrice');
+            MaxPrice = a.getAttribute('data-MaxPrice');
+            MinPrice = a.getAttribute('data-MinPrice');
             sortBtn.removeEventListener('change', handleSortChange);
             sortBtn.addEventListener('change', handleSortChange);
             value = 3;

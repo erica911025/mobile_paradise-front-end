@@ -33,19 +33,19 @@ async function generateInfo(productInfo){
   try{
     const pictureDiv = document.querySelector('#main div:nth-child(1)')
     const picture = document.createElement('img');
-    picture.src = `image/${productInfo[0].ItemImg}`;
+    picture.src = `image/${productInfo[0].ItemImg[0]}`;
     picture.style.width = '100%';
     picture.style.height = 'auto';
     pictureDiv.appendChild(picture);
     const productBrand = document.getElementById('Brand2');
-    productBrand.textContent = productInfo[0].Brand;
+    productBrand.textContent = productInfo[0].Brand ;
     const productName = document.getElementById('ItemName2');
     productName.textContent = productInfo[0].ItemName;
     const introduce_photo = document.getElementById('introduce_photo');
     productInfo.forEach((item, index) => {
       if(index != 0){
         const img = document.createElement('img');
-        img.src = `image/${item.ItemImg}`;
+        img.src = `image/${item.ItemImg[index]}`;
         introduce_photo.appendChild(img)
       }
     });

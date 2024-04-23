@@ -67,4 +67,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
     })
     .catch(error => {
         console.error('發生錯誤:', error);
+        alert('請先登入');  
+        window.location.href = './login.html';
     });
+

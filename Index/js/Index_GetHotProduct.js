@@ -18,9 +18,9 @@ fetch(url, { credentials: 'include' })
         carouselItem.classList.add('carousel-item');
         carouselItem.innerHTML = `
           <div class="product">
-            <img src="image/i15.png" alt="商品圖片"> 
+            <img src="image/${item.ItemImg}" alt="商品圖片"> 
             <div class="text">
-              <a href="./product.html">
+              <a href="./product.html?ItemId=${item.ItemId}">
                 <div class="hot"> 
                   <h4>【${item.Brand}】</h4>
                 </div>
