@@ -14,7 +14,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
 
         console.log(data);
 
-
+        let total = 0;
         if (data && data.length > 0) {
             data.forEach(item => {
                 const itemElement = document.createElement('div');
@@ -25,11 +25,14 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                     <p>數量：${item.itemNum}</p>
                     <p>單價：${item.itemPrice} </p>
                 `;
+                total += item.itemPrice * item.itemNum;
                 itemContainer.appendChild(itemElement);
             });
         }
         
         
+        const h2 = document.querySelector(".total")
+        h2.textContent = `總計：$${total}`;
 
     })
     .catch(error => {

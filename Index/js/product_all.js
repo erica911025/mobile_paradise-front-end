@@ -116,8 +116,8 @@ function ShowProduct(data){
     h4.textContent = `【${data.Brand}】`;
     const h3 = document.createElement('h3');
     h3.textContent = data.ItemName;
-    const p = document.createElement('p');
-    p.textContent = `NT${data.ItemPriceMin}起`;
+    const p = document.createElement('p');  
+    p.textContent = `NT$${data.ItemPriceMin}起`;
     infoDiv.appendChild(h4);
     infoDiv.appendChild(h3);
     infoDiv.appendChild(p);
