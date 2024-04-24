@@ -401,6 +401,23 @@
         width: 90%;
     }
 
+    #page{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 100px;
+    }
+    #page a{
+        margin: 8px;
+        color: #5f7e99;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    #page a:hover{
+        color: #9bb9d6;
+    }
+
 /*#endregion*/
 
 
