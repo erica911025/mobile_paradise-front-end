@@ -9,7 +9,7 @@ fetch(url, { credentials: 'include' })
   })
   .then(data => {
     console.log(data);
-
+    
     const carouselContainer = document.querySelector('.carousel-container .carousel');
 
     if (data.Message && data.Message.length > 0) {
@@ -34,6 +34,7 @@ fetch(url, { credentials: 'include' })
           </div>
         `;
         carouselContainer.appendChild(carouselItem);
+        
       });
     } else {
       const noItemsMessage = document.createElement('div');

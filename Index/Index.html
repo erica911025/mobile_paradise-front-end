@@ -157,14 +157,14 @@
 
             <!-- 上一個 -->
             <img src="image/icon_previous.png" class="prev-btn next">
-            
+
             <!-- 商品 -->
             <div class="carousel-container">
                 <div class="carousel">
-
-                </div>                
+                     
+                </div>
             </div>
-            
+
             <!-- 下一個 -->
             <img src="image/icon_next.png" class="next-btn next">
 
@@ -187,17 +187,17 @@
                     currentIndex = index;
                     }
 
-                    const offset = -currentIndex * (20 / itemsPerPage);
-                    carousel.style.transform = `translateX(${offset}%)`;
-                    
+                    const offset = -currentIndex * (115 / itemsPerPage); // 將偏移量設置為正值
+                    carousel.style.transform = `translateX(-${offset}%)`; // 使用負值來移動輪播圖片
+
                 }
 
                 prevBtn.addEventListener('click', function() {
-                    showSlide(currentIndex - itemsPerPage);
+                    showSlide(currentIndex + itemsPerPage);
                 });
 
                 nextBtn.addEventListener('click', function() {
-                    showSlide(currentIndex + itemsPerPage);
+                    showSlide(currentIndex - itemsPerPage);
                 });
             });
 
