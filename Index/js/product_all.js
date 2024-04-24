@@ -24,8 +24,8 @@ async function getALLProduct(sortway, nowPage) {
         })
 }
 
-async function getHotProduct(sortway, nowPage) {
-    await fetch(`http://localhost:5193/api/Paradise/Hot?sortway=${sortway}&nowPage=${nowPage}`, {
+async function getHotProduct(sortway) {
+    await fetch(`http://localhost:5193/api/Paradise/Hot?sortway=${sortway}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,9 +40,7 @@ async function getHotProduct(sortway, nowPage) {
         })
         .then(data => {
             data.Message.forEach(item => {
-                console.log(item, "8888");
-                console.log("getHotProduc_sortway", sortway)
-                ShowProduct_Hot(item, sortway);
+                ShowProductHot(item);
             });
         })
         .catch(error => {
@@ -108,9 +106,7 @@ async function getProductByPrice(sortway, MaxPrice, MinPrice, nowPage) {
         })
 }
 
-async function ShowProduct_Hot(data, sortway) {
-    console.log("ShowProduct_sortway", sortway);
-    console.log("data45645646", data);
+async function ShowProductHot(data) {
 
     const show = document.getElementById('product_show');
     const a = document.createElement('a');
@@ -134,12 +130,14 @@ async function ShowProduct_Hot(data, sortway) {
     div.appendChild(infoDiv);
     a.appendChild(div);
     show.appendChild(a);
+    
+    const page = document.getElementById('page');
+    page.innerHTML = ''; // 清空分頁控制項，以防止重複添加
+
+
 }
 
 async function ShowProduct(data, sortway) {
-    console.log("ShowProduct_sortway", sortway);
-    console.log("data", data);
-    console.log("data", data.Items);
 
     data.Items.forEach(item => {
         const show = document.getElementById('product_show');
@@ -175,6 +173,7 @@ async function ShowProduct(data, sortway) {
 
     const createPageLink = (pageNumber) => {
         const link = document.createElement('a');
+
         link.href = `./product_all.html?sortway=${sortway}&nowPage=${pageNumber}`;
         link.textContent = pageNumber;
         if (pageNumber === currentPage) {
@@ -237,7 +236,7 @@ async function getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage) {
         case 1:
             show.innerHTML = '';
             h2.textContent = "HOT 熱銷商品"
-            getHotProduct(sortway, nowPage);
+            getHotProduct(sortway);
             break;
         case 2:
             show.innerHTML = '';
@@ -301,8 +300,7 @@ window.onload = function() {
         sortBtn.addEventListener('change', handleSortChange);
         event.preventDefault();
         value = 1;
-        const nowPage = getCurrentPage(); // 獲取當前頁碼
-        getsort(value, '', '', '', '', nowPage);
+        getsort(value, '', '', '', '', '');
     })
     const brandA = document.querySelectorAll('#sidebar_Brand a');
     brandA.forEach(a => {
