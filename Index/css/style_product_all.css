@@ -407,14 +407,14 @@
         justify-content: center;
         margin: 100px;
     }
-    #page p{
+    #page a{
         margin: 8px;
         color: #5f7e99;
         font-weight: bold;
         font-size: 22px;
     }
 
-    #page p:hover{
+    #page a:hover{
         color: #9bb9d6;
     }
 
