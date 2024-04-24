@@ -49,6 +49,12 @@ async function generateInfo(productInfo){
         introduce_photo.appendChild(img)
       }
     });
+    // for (let i = 1; i < productInfo.ItemImg.length; i++) {
+    //   const img = document.createElement('img');
+    //   img.src = `image/${productInfo[0].ItemImg[i]}`;
+    //   introduce_photo.appendChild(img);
+    // }
+    
     const introduce_detailed = document.getElementById('detailed');
     introduce_detailed.textContent = productInfo[0].Instruction;
   }catch(error){
