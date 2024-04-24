@@ -51,30 +51,35 @@ fetch(url, { credentials: 'include' })
     const carousel = document.querySelector('.carousel');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    const carouselItems = document.querySelectorAll('.carousel-item');
     let currentIndex = 0;
-    const totalItems = carouselItems.length;
-    const itemsPerPage = 1; // 每頁顯示的商品數量
+    const totalItems = 8; // 商品總數
+    const itemsPerPage = 4; // 每頁顯示的商品數量
+    const itemWidth = 178; // 每個商品的寬度
 
     function showSlide(index) {
-        if (index < 0) {
-        currentIndex = totalItems - itemsPerPage;
-        } else if (index >= totalItems) {
-        currentIndex = 0;
+        // 檢查索引是否超出範圍，並調整索引以實現循環播放
+        if (index >= totalItems) {
+            currentIndex = 0; // 如果索引超出了範圍，將當前索引設置為 0，實現循環
+        } else if (index < 0) {
+            currentIndex = totalItems - 2; // 如果索引小於 0，將當前索引設置為最後一個項目的索引，實現循環
         } else {
-        currentIndex = index;
+            currentIndex = index;
         }
 
-        const offset = -currentIndex * (115 / itemsPerPage); // 將偏移量設置為正值
-        carousel.style.transform = `translateX(-${offset}%)`; // 使用負值來移動輪播圖片
-
+        const offset = -currentIndex * itemWidth; // 計算偏移量
+        carousel.style.transform = `translateX(${offset}px)`; // 使用偏移量移動輪播圖片
     }
 
+    // 點擊上一個按鈕時的事件處理程序
     prevBtn.addEventListener('click', function() {
-        showSlide(currentIndex + itemsPerPage);
+        showSlide(currentIndex - itemsPerPage); // 將索引減去每頁顯示的商品數量，實現向左移動
     });
 
+    // 點擊下一個按鈕時的事件處理程序
     nextBtn.addEventListener('click', function() {
-        showSlide(currentIndex - itemsPerPage);
+        showSlide(currentIndex + itemsPerPage); // 將索引加上每頁顯示的商品數量，實現向右移動
     });
+
+    // 初始化輪播圖
+    showSlide(currentIndex);
 });
