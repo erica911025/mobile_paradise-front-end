@@ -149,6 +149,30 @@
 
 /*#endregion*/
 
+.carousel-container_img {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+  }
+  
+  .carousel-slide_img {
+    min-width: 100%;
+    display: flex;
+  }
+  
+  .carousel-slide_img img {
+    min-width: 100%;
+    height: 500px;
+  }
+
+  .pnBtn{
+    z-index: 10; 
+    box-shadow: 2px 2px 8px #4c5f79;
+    border-radius: 100px;
+    width: 80px; 
+    height: 80px;
+  }
+
 
 /* 最新資訊 *//*#region*/
 
