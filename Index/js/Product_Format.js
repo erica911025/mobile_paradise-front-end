@@ -42,13 +42,20 @@ async function generateInfo(productInfo){
     const productName = document.getElementById('ItemName2');
     productName.textContent = productInfo[0].ItemName;
     const introduce_photo = document.getElementById('introduce_photo');
-    productInfo.forEach((item, index) => {
+    console.log(productInfo)
+    Array.from(productInfo[0].ItemImg).forEach((item, index) => {
       if(index != 0){
         const img = document.createElement('img');
-        img.src = `image/${item.ItemImg[index]}`;
+        img.src = `image/${item}`;
         introduce_photo.appendChild(img)
       }
     });
+    // for (let i = 1; i < productInfo.ItemImg.length; i++) {
+    //   const img = document.createElement('img');
+    //   img.src = `image/${productInfo[0].ItemImg[i]}`;
+    //   introduce_photo.appendChild(img);
+    // }
+    
     const introduce_detailed = document.getElementById('detailed');
     introduce_detailed.textContent = productInfo[0].Instruction;
   }catch(error){
@@ -148,6 +155,7 @@ async function generateQA(ItemId){
     return response.json();
   })
   .then(data => {
+    console.log(data);
     const Div = document.querySelector('#Q_A div:nth-child(3)');
     data.Message.forEach(item =>{
       const contentDiv = document.createElement('div');

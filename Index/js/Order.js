@@ -82,11 +82,20 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
                             </form>
                         `;
                         modal.style.display = "block";
+                        const closeBtn = document.querySelector('.close');
+                        closeBtn.addEventListener('click', function() {
+                            
+                            modal.style.display = "none";
+                        });
+
+
+                        window.addEventListener('click', function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        });
+
                     })
-
-
-                    
-                    
                     .catch(error => {
                         console.error('發生錯誤:', error.message);
                     });

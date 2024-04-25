@@ -114,7 +114,7 @@ async function ShowProductHot(data) {
     a.className = 'product'
     const div = document.createElement('div')
     const img = document.createElement('img');
-    img.src = `image/i15.png`
+    img.src = `image/${data.ItemImg}`
     img.alt = "商品圖片";
     const infoDiv = document.createElement('div');
     const h4 = document.createElement('h4');
@@ -146,7 +146,7 @@ async function ShowProduct(data, sortway) {
         a.className = 'product'
         const div = document.createElement('div')
         const img = document.createElement('img');
-        img.src = `image/i15.png`
+        img.src = `image/${item.ItemImg}`
         img.alt = "商品圖片";
         const infoDiv = document.createElement('div');
         const h4 = document.createElement('h4');
