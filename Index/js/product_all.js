@@ -266,6 +266,7 @@ async function getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage) {
 
 const sortBtn = document.getElementById('sort');
 let value;
+let Brand;
 let MaxPrice;
 let MinPrice;
 function handleSortChange() {
@@ -273,6 +274,7 @@ function handleSortChange() {
     show.innerHTML = '';
     sortway = sortBtn.value;
     const nowPage = getCurrentPage(); // 獲取當前頁碼
+    console.log(value, sortway, Brand, MaxPrice, MinPrice, nowPage)
     getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage);
 }
 
@@ -308,7 +310,7 @@ window.onload = function() {
         a.addEventListener('click', function(event) {
             window.scrollTo(0, 0);
             event.preventDefault();
-            const Brand = a.getAttribute('dataset');
+            Brand = a.getAttribute('dataset');
             sortBtn.removeEventListener('change', handleSortChange);
             sortBtn.addEventListener('change', handleSortChange);
             value = 2;
