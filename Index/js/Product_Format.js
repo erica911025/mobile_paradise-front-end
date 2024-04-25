@@ -29,8 +29,42 @@ async function generate(ItemId){
   }
 }
 
+
 async function generateInfo(productInfo){
   try{
+    const path = document.querySelector('.path');
+
+    // 創建首頁連結
+    const index = document.createElement('a');
+    index.href = "./Index.html";
+    index.textContent = "首頁";
+    
+    // 創建分隔符
+    const separator1 = document.createElement('p');
+    separator1.textContent = " > ";
+    
+    // 創建商品一覽連結
+    const productAll = document.createElement('a');
+    productAll.href = "./product_all.html";
+    productAll.textContent = "商品一覽";
+
+    const separator2 = document.createElement('p');
+    separator2.textContent = " > ";
+    
+    
+    // 創建商品名稱連結
+    const itemName = document.createElement('a');
+    itemName.href = "";
+    itemName.textContent = "【"+productInfo[0].Brand+"】"+productInfo[0].ItemName;
+    itemName.id = "ItemName";
+    
+    path.appendChild(index);
+    path.appendChild(separator1);
+    path.appendChild(productAll);
+    path.appendChild(separator2);
+    path.appendChild(itemName);
+    
+
     const pictureDiv = document.querySelector('#main div:nth-child(1)')
     const picture = document.createElement('img');
     picture.src = `image/${productInfo[0].ItemImg[0]}`;
