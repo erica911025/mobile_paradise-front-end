@@ -87,6 +87,8 @@ fetch(url, { credentials: 'include' })
 document.addEventListener('DOMContentLoaded', function () {
   const carouselSlide = document.querySelector('.carousel-slide_img');
   let carouselImages = document.querySelectorAll('.carousel-slide_img img');
+  const prevBtn = document.querySelector('#prevBtn');
+  const nextBtn = document.querySelector('#nextBtn');
 
   // 將克隆的圖片添加到carouselImages中
   const firstClone = carouselImages[0].cloneNode(true);
@@ -99,40 +101,46 @@ document.addEventListener('DOMContentLoaded', function () {
   carouselSlide.insertBefore(lastClone, carouselImages[0]);
   carouselImages = document.querySelectorAll('.carousel-slide_img img');
 
-  // Buttons
-  const prevBtn = document.querySelector('#prevBtn');
-  const nextBtn = document.querySelector('#nextBtn');
-
   // Counter
   let counter = 1;
-  const size = window.innerWidth; // 視窗的寬度
+  const size = carouselImages[0].clientWidth;
 
   carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
   // Button listeners
   nextBtn.addEventListener('click', () => {
-      if (counter >= carouselImages.length - 1) return;
-      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+      if (counter >= carouselImages.length - 1) {
+          counter = 1;
+          carouselSlide.style.transition = 'none';
+          carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+          return;
+      }
       counter++;
+      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
       carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
   });
 
   prevBtn.addEventListener('click', () => {
-      if (counter <= 0) return;
-      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+      if (counter <= 0) {
+          counter = carouselImages.length - 2;
+          carouselSlide.style.transition = 'none';
+          carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+          return;
+      }
       counter--;
+      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
       carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
   });
 
   carouselSlide.addEventListener('transitionend', () => {
       if (carouselImages[counter].id === 'lastClone') {
           carouselSlide.style.transition = 'none';
-          counter = carouselImages.length - 2;
+          counter = 1;
           carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
       }
       if (carouselImages[counter].id === 'firstClone') {
           carouselSlide.style.transition = 'none';
-          counter = carouselImages.length - counter;
+          counter = carouselImages.length - 2;
           carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
       }
   });

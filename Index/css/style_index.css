@@ -162,15 +162,28 @@
   
   .carousel-slide_img img {
     min-width: 100%;
-    height: 500px;
+    width: 1200px;
+    height: 450px;
   }
 
-  .pnBtn{
-    z-index: 10; 
-    box-shadow: 2px 2px 8px #4c5f79;
-    border-radius: 100px;
-    width: 80px; 
-    height: 80px;
+  .pnBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  #prevBtn{
+    left: 10px;
+  }
+
+  #nextBtn{
+    right: 10px;
   }
 
 
