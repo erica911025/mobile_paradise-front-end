@@ -83,3 +83,57 @@ fetch(url, { credentials: 'include' })
     // 初始化輪播圖
     showSlide(currentIndex);
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const carouselSlide = document.querySelector('.carousel-slide_img');
+  let carouselImages = document.querySelectorAll('.carousel-slide_img img');
+
+  // 將克隆的圖片添加到carouselImages中
+  const firstClone = carouselImages[0].cloneNode(true);
+  const lastClone = carouselImages[carouselImages.length - 1].cloneNode(true);
+  firstClone.id = 'firstClone'; // 添加ID
+  firstClone.classList.add('carousel-image'); // 添加類名
+  lastClone.id = 'lastClone'; // 添加ID
+  lastClone.classList.add('carousel-image'); // 添加類名
+  carouselSlide.appendChild(firstClone);
+  carouselSlide.insertBefore(lastClone, carouselImages[0]);
+  carouselImages = document.querySelectorAll('.carousel-slide_img img');
+
+  // Buttons
+  const prevBtn = document.querySelector('#prevBtn');
+  const nextBtn = document.querySelector('#nextBtn');
+
+  // Counter
+  let counter = 1;
+  const size = window.innerWidth; // 視窗的寬度
+
+  carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
+  // Button listeners
+  nextBtn.addEventListener('click', () => {
+      if (counter >= carouselImages.length - 1) return;
+      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+      counter++;
+      carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+  });
+
+  prevBtn.addEventListener('click', () => {
+      if (counter <= 0) return;
+      carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+      counter--;
+      carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+  });
+
+  carouselSlide.addEventListener('transitionend', () => {
+      if (carouselImages[counter].id === 'lastClone') {
+          carouselSlide.style.transition = 'none';
+          counter = carouselImages.length - 2;
+          carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+      }
+      if (carouselImages[counter].id === 'firstClone') {
+          carouselSlide.style.transition = 'none';
+          counter = carouselImages.length - counter;
+          carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+      }
+  });
+});
