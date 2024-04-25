@@ -40,7 +40,7 @@ async function getHotProduct(sortway) {
         })
         .then(data => {
             data.Message.forEach(item => {
-                ShowProductHot(item);
+                ShowProductHot(item,sortway);
             });
         })
         .catch(error => {
@@ -75,6 +75,7 @@ async function getProductByBrand(sortway, Brand, nowPage) {
 
 async function getProductByPrice(sortway, MaxPrice, MinPrice, nowPage) {
     var url;
+    console.log(value,MaxPrice,MinPrice)
     if (MinPrice != null && MaxPrice != null) {
         url = `http://localhost:5193/api/Paradise/GetProduct?MaxPrice=${MaxPrice}&MinPrice=${MinPrice}&sortway=${sortway}&nowPage=${nowPage}`;
     } else if (MinPrice != null) {
@@ -174,7 +175,7 @@ async function ShowProduct(data, sortway) {
     const createPageLink = (pageNumber) => {
         const link = document.createElement('a');
 
-        link.href = `./product_all.html?sortway=${sortway}&nowPage=${pageNumber}`;
+        link.href = `./product_all.html?value=${value}&sortway=${sortway}&nowPage=${pageNumber}`;
         link.textContent = pageNumber;
         if (pageNumber === currentPage) {
             link.style.fontWeight = 'bold'; // 標記當前頁碼
@@ -265,21 +266,21 @@ async function getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage) {
 
 const sortBtn = document.getElementById('sort');
 let value;
-
+let MaxPrice;
+let MinPrice;
 function handleSortChange() {
     const show = document.getElementById('product_show');
     show.innerHTML = '';
     sortway = sortBtn.value;
     const nowPage = getCurrentPage(); // 獲取當前頁碼
-    getProduct(value, sortway, '', '', '', nowPage);
+    getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage);
 }
 
 window.onload = function() {
     const UrlParams = new URLSearchParams(window.location.search);
     value = UrlParams.get('value');
     Brand = UrlParams.get('brand');
-    let MaxPrice;
-    let MinPrice;
+    
     const nowPage = getCurrentPage(); // 獲取當前頁碼
     getsort(value, Brand, MaxPrice, MinPrice);
     sortBtn.addEventListener('change', handleSortChange);
