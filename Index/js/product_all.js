@@ -231,16 +231,19 @@ async function getsort(value, Brand, MaxPrice, MinPrice) {
 
 async function getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage) {
     const h2 = document.querySelector('#product_title h2');
+    const a = document.querySelector('.path a:nth-child(5)')
     const show = document.getElementById('product_show');
     value = parseInt(value);
     switch (value) {
         case 1:
             show.innerHTML = '';
+            a.textContent = "HOT 熱銷商品"
             h2.textContent = "HOT 熱銷商品"
             getHotProduct(sortway);
             break;
         case 2:
             show.innerHTML = '';
+            a.textContent = Brand
             h2.textContent = Brand
             getProductByBrand(sortway, Brand, nowPage);
             break;
@@ -248,16 +251,20 @@ async function getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage) {
             show.innerHTML = '';
             console.log(MaxPrice, MinPrice)
             if (MinPrice != null && MaxPrice != null) {
+                a.textContent = `${MinPrice}~${MaxPrice}`
                 h2.textContent = `${MinPrice}~${MaxPrice}`;
             } else if (MaxPrice != null) {
+                a.textContent = "5,000以下"
                 h2.textContent = "5,000以下";
             } else if (MinPrice != null) {
+                a.textContent = "40,000以上"
                 h2.textContent = "40,000以上";
             }
             getProductByPrice(sortway, MaxPrice, MinPrice, nowPage)
             break;
         default:
             show.innerHTML = '';
+            a.textContent = "ALL 所有商品"
             h2.textContent = "ALL 所有商品";
             getALLProduct(sortway, nowPage);
             break;
