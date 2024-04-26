@@ -50,7 +50,7 @@ a{
         color: rgb(137, 139, 142);
         text-decoration: none;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .path a{
@@ -59,7 +59,7 @@ a{
         color: rgb(80, 119, 158);
         text-decoration: none;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .path a:hover{
