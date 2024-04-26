@@ -20,7 +20,7 @@ a{
 /* header *//*#region*/
 
 header{
-    background-color: #98B5D1;
+    background-color: #567da9;
     padding: 0px 13%;
     display: flex;  
     flex-wrap: wrap;
@@ -47,7 +47,7 @@ header{
 }
 
 .nav_main a:hover{
-    background-color: #5f7e99;
+    background-color: #80a0bc;
 }
 
 
@@ -103,3 +103,17 @@ header{
 }
 
 /*#endregion*/
+
+
+
+
+/* footer */
+footer{
+    background-color: #527398;
+    padding: 18px 15%;
+    display: flex;
+    justify-content: center;  
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
