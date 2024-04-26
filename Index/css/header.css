@@ -50,6 +50,7 @@ a{
         color: rgb(137, 139, 142);
         text-decoration: none;
         font-weight: bold;
+        font-size: 20px;
     }
 
     .path a{
@@ -58,6 +59,7 @@ a{
         color: rgb(80, 119, 158);
         text-decoration: none;
         font-weight: bold;
+        font-size: 20px;
     }
 
     .path a:hover{
@@ -106,7 +108,7 @@ header{
     color: white;
     padding:0 5px;      
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .nav img{
@@ -175,5 +177,5 @@ footer{
     justify-content: center;  
     color: white;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 18px;
 }
