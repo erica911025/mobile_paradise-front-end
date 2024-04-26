@@ -8,6 +8,10 @@
 
 body{
     background-color: #FEFDF7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 a{
@@ -18,50 +22,16 @@ a{
 /* #endregion */
 
 
-/* 路徑 *//*#region*/
-
-.path{
-    display: flex;
-    padding: 1px 13%;
-    margin-bottom: 0;
-    background-color: #e6eeef;
-    position: sticky;
-    top:91px; 
-    z-index: 50;       
-}
-
-.path p{
-    margin: 5px;
-    margin-bottom: 10px;
-    color: rgb(137, 139, 142);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.path a{
-    margin: 5px;
-    margin-bottom: 10px;
-    color: rgb(80, 119, 158);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.path a:hover{
-    color: #8bb5c2;
-}
-
-/*#endregion*/
-
 
 /* title *//* #region */
-
 .main_title{
+    width: 80%;
     margin: 10px 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 30px 0;
-    font-size: 28px;
+    font-size: 33px;
     font-weight: bolder;
     border-bottom: solid #c4d5e1 5px;
     color:#4e657a;
@@ -87,17 +57,32 @@ a{
         background-color: #ffffff;
         border-radius: 20px;
         box-shadow: 2px 2px 10px #bec0c1; 
-    }
-
-    .main{
-        width: 90%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
+    .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .main_reg{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+    }
+
     .form{
+        width: 70%;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form_reg{
+        width: 70%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -109,7 +94,7 @@ a{
         display: flex;
         align-items: center;
         font-weight: bolder;
-        font-size: 22px;
+        font-size: 26px;
         color: #4c5f79;
     }
 
@@ -118,14 +103,18 @@ a{
         margin: 15px;
     }
 
+    .title p{
+        color: #8da3b7;
+        margin: 30px 0;
+    }
+
 
     /* 欄位內容 */
     .div{
-        width: 40%;
-        margin: 10px 0;
-        padding: 15px 30px;
+        width: 80%;
+        padding: 15px 50px;
         font-weight: bolder;
-        font-size: 22px;
+        font-size: 26px;
         color: #5f7e99;
         margin:5px 15px;
     }
@@ -134,18 +123,18 @@ a{
     /* 輸入框設定 */
     .text{
         width: 100%;
-        padding: 10px;
+        padding: 15px;
         margin: 15px;
         border:solid 1px #a3b1c5;
         border-radius: 8px;
-        font-size: 16px;
+        font-size: 22px;
     }
 
 
     /* 登入的button及去註冊 */
 
     .button{
-        font-size: 20px;
+        font-size: 22px;
         margin: 20px 0  50px 0;
         width: 150px;
         padding: 8px ;
@@ -171,7 +160,8 @@ a{
     }
 
     #goreg p{
-        font-size: 20px;
+        font-size: 22px;
+        font-weight: bold;
         margin: 20px 30px  50px 30px;
         padding: 8px ;
         text-decoration: underline;
@@ -197,4 +187,27 @@ footer{
     color: white;
     font-weight: bold;
     font-size: 14px;
+}
+
+@media screen and (max-width: 576px) {
+    #goreg{
+        display: flex;
+        flex-direction: column;  
+    }
+    #goreg p{
+        font-size: 22px;
+        margin: 0px 30px 20px 30px ;
+        padding: 0px ;
+    }
+    .button{
+        margin: 30px;
+    }
+    .main_title img{
+        width: 15%;
+        height: auto;
+    }
+    #main{
+        margin: 50px 5%;
+    }
+    
 }

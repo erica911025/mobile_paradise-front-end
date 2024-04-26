@@ -13,8 +13,9 @@
 
 <body>
 
+    <div id="header">
     <!-- header -->
-    <header id="header">
+    <header>
 
         <!-- header左半部(logo/nav) -->
         <div div class="header">
@@ -58,6 +59,8 @@
         </div>
 
     </header>
+    </div>
+
 
      <!-- 登入內容 -->
      <div id="main">
@@ -68,10 +71,10 @@
             <img src="image/icon_dots.png" >
         </div>
 
-        <form action="/api/Member/Register" class="form" id="registerForm" method="post">
+        <form action="/api/Member/Register" class="form_reg" id="registerForm" method="post">
         
             <!-- 帳號密碼設定 -->
-            <div class="main" style="margin-bottom: 20px;">
+            <div class="main_reg" style="margin-bottom: 20px;">
 
                 <div class="title">
                     <img src="image/arrow-right.png" >
@@ -91,9 +94,9 @@
             </div>
             
             <!-- 填寫基本資料 -->
-            <div class="main" style="border-top: solid 1px #aab6c6;">
+            <div class="main_reg" style="border-top: solid 1px #aab6c6;">
                 
-                <div class="title">
+                <div class="title" style="margin: 10px 0;">
                     <img src="image/arrow-right.png" >
                     <p>填寫基本資料</p> 
                 </div>            
