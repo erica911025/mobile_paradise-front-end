@@ -54,13 +54,14 @@
     }
 
     .title img{
-        width: 34%; 
+        width: 30%; 
         height: 1%; 
         padding:30px 30px;
     }
 
 /*#endregion*/
 
+/* 輪播圖 *//*#region*/
 .carousel-container_img {
     display: flex;
     overflow: hidden;
@@ -97,6 +98,7 @@
   #nextBtn{
     right: 10px;
   }
+  /*#endregion*/
 
 
 /* 最新資訊 *//*#region*/
@@ -252,16 +254,20 @@
 /*#endregion*/
 
 
-/* footer */
 
-footer{
-    background-color: #98B5D1;
-    padding: 18px 15%;
-    display: flex;
-    justify-content: center;  
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
+@media screen and (max-width: 576px) {
+    .title img{
+        display: none;
+    }
+
+    .title{
+        display: flex;
+        justify-content: center;
+        text-decoration: underline;
+    }
+
+    .div{
+        padding:30px 5px;
+        margin: 50px 10%;
+    }
 }
-
-

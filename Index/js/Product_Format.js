@@ -68,8 +68,7 @@ async function generateInfo(productInfo){
     const pictureDiv = document.querySelector('#main div:nth-child(1)')
     const picture = document.createElement('img');
     picture.src = `image/${productInfo[0].ItemImg[0]}`;
-    picture.style.width = '100%';
-    picture.style.height = 'auto';
+    picture.id="cart_img"
     pictureDiv.appendChild(picture);
     const productBrand = document.getElementById('Brand2');
     productBrand.textContent = productInfo[0].Brand ;

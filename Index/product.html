@@ -88,30 +88,30 @@
             </div>
 
             <div>
-                <h4>【商品規格】</h4>
+                <h4 style="font-size: 26px;">【商品規格】</h4>
             </div>
 
             <form action="" id="AddCartForm">
                 <div id="choice">
                     <div id="radio" >
-                        <p>顏色</p>
-                        <div id="colorOptions">
+                        <p>◎ 顏色</p>
+                        <div id="colorOptions" class="format" >
                             
 
                         </div>
                     </div>
                     
                     <div id="radio" >
-                        <p id="p">儲存空間</p>
-                        <div id="SpaceOptions">
+                        <p id="p">◎ 儲存空間</p>
+                        <div id="SpaceOptions" class="format" >
                             
 
                         </div>
                     </div>
                         
-                    <p>數量</p>
-                        <div>
-                            <div class="numbox">
+                    <p>◎ 數量</p>
+                        <div  class="format">
+                            <div class="numbox" >
                                 <button class="min" type="button" onclick="opera('val', false);"> - </button>
                                 <input class="num" type="number" id="val" value="1"/>
                                 <button class="plus" type="button" onclick="opera('val', true);"> + </button>
@@ -132,15 +132,18 @@
                             </script>
                             
                         </div> 
+                        <p >◎ 單價</p>  
+                        <div id="price">         
+                               
+                                <div id="price" >
+                                    <h3 >$ <div id="ItemPrice"></div></h3>
+                                </div> 
+                                <input type="submit" value="加入購物車" id="submit">           
+                                                                                  
+                        </div>   
                 </div>                
 
-                <div id="price">
-                    <h2>單價：</h2>
-                    <div id="price">
-                        <h3 >$ <div id="ItemPrice"></div></h3>
-                    </div>                    
-                    <input type="submit" value="加入購物車" id="submit">
-                </div>    
+
 
             </form>
 
@@ -153,7 +156,7 @@
 
         <div class="introduce_title">
             <img src="image/icon_dots.png" >
-            <p>商品介紹</p>
+            <p >商品介紹</p>
             <img src="image/icon_dots.png" >
         </div>
 
@@ -194,7 +197,7 @@
 
                <div id="create_title">
                     <img src="image/pen.png" id="logo" style="width: 40px; height: 40px; margin:0px 10px;">
-                    <h3>新增提問留言</h3>
+                    <h3 style="font-size: 24px;">新增提問留言</h3>
                 </div>       
 
                 <form id="QAForm">
@@ -207,7 +210,7 @@
             
             <div id="allQA_title">
                 <img src="image/Line_L.png" >
-                <p style="padding: 10px 10px;">所有留言</p>
+                <p style="padding: 10px 10px; font-size: 26px;">所有留言</p>
                 <img src="image/Line_R.png" >
             </div>
 

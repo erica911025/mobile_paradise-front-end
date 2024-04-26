@@ -332,15 +332,25 @@
 /*#endregion*/
 
 
-/* footer */
-footer{
-    background-color: #98B5D1;
-    padding: 15px 15%;
-    display: flex;
-    justify-content: center;  
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
+@media screen and (max-width: 576px) {
+    #sidebar{
+        display: none;
+    }
+    #product{
+        margin: 0;
+        padding:20px 0;
+        border-left: none;
+    }
+    .product{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 35%;
+        height: 280px;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 2px 2px 8px #d6d7de;
+    }
 }
-
-

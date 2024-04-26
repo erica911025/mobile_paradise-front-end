@@ -79,11 +79,12 @@ a{
 
 
     #cart{
+        width: 50%;
         padding:30px 50px 10px 50px;
         margin-left: 50px;
         color: #4a6175;
         font-weight: bolder;
-        font-size: 22px;
+        font-size: 24px;
     }
 
     #cart>div{
@@ -91,15 +92,21 @@ a{
     }
 
     #choice{
-        margin: 10px 20px;
+        margin: 10px 5px;
     }
 
     form p{
         color: #778fac;
-        font-size: 22px;
+        font-size: 28px;
         margin:5px 20px;
     }
 
+    .format{
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+    }
 
     #radio input[type="radio"] {
         display: none; 
@@ -115,7 +122,7 @@ a{
         margin:20px 10px 40px 20px; 
         padding: 5px;
         width: 80PX;
-        font-size: 19px;
+        font-size: 22px;
         text-align: center;
         background: #e4edf8; 
         color: #475e85; 
@@ -165,7 +172,7 @@ a{
         border: 0;
         border-top: 0;
         border-bottom: 0;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bolder;
         
     }
@@ -174,16 +181,21 @@ a{
          -webkit-appearance: none;
     }
     
-    
+    #cart_img{
+        width: 100%;
+        height: auto;
+    }
 
 
     #price{
         display: flex;
         align-items: center;
         margin: 10px;
+        width: 100%;
     }
 
     #price>h3{
+        min-width: 120px;
         padding:3px 40px;
         margin:0 10px;
         color: #a29b7a;
@@ -198,7 +210,7 @@ a{
         border: 0;
         border-radius: 10px;
         font-weight: bolder;
-        font-size: 18px;
+        font-size: 20px;
         color: #425068;
         background-color: #cbd6e9;
     }
@@ -212,12 +224,10 @@ a{
 
 
 
-/* 商品介紹/詳細規格/Q&A */
-
-/* #region */
+/* 商品介紹/詳細規格/Q&A *//* #region */
 
 .introduce{
-    margin: 80px 15%;
+    margin: 80px 13%;
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 2px 2px 10px #bec0c1; 
@@ -229,7 +239,7 @@ a{
     justify-content: center;
     align-items: center;
     padding: 20px 0;
-    font-size: 25px;
+    font-size: 28px;
     font-weight: bolder;
     border-bottom: solid #c4d5e1 5px;
     color:#4e657a;
@@ -271,7 +281,7 @@ a{
 
     #detailed{
         padding: 50px 150px 80px 150px;
-        line-height: 20px;
+        font-size: 22px;
         color:#606b75;
     }
 
@@ -292,7 +302,7 @@ a{
     #Q_A{
         display: flex;
         flex-direction: column;
-        padding: 40px 100px 60px 100px;
+        padding: 40px 5% 60px 5%;
         line-height: 20px;
         color:#606b75;
     }
@@ -305,7 +315,7 @@ a{
         display: flex;
         align-items: center;
         margin-bottom: 10px;
-        font-size: 20px;
+        font-size: 22px;
     }
 
     #create>form{
@@ -316,7 +326,7 @@ a{
 
     #create>form>input{
         margin:18px 5px;
-        width: 18%;
+        width: 130px;
         padding: 6px ;
         text-decoration: none;
         display: flex;
@@ -326,7 +336,7 @@ a{
         font-weight: bolder;
         border: solid #ccdbe7 2px;
         border-radius: 50px;
-        font-size: 16px;
+        font-size: 20px;
     }
 
     #create>form>input:hover{
@@ -336,11 +346,11 @@ a{
 
     #create_text{
         padding: 10px;
-        width: 80%;
+        width: 100%;
         resize: none;
         border: 1.5px solid #d0d8e8;
         border-radius: 5px;
-        font-size: 16px;
+        font-size: 20px;
     }
 
 
@@ -349,7 +359,7 @@ a{
         justify-content: space-between;
         align-items: center;
         font-weight: bolder;
-        font-size: 20px;
+        font-size: 22px;
         margin: 10px;
     }
 
@@ -361,9 +371,10 @@ a{
 
     .content{
         font-weight: bolder;
-        line-height: 30px;
+        line-height: 35px;
         margin:0px 50px;
         padding:20px 30px;
+        font-size: 18px;
         color:#556d82;
         border-bottom:solid #8bb5c2 1px;
     }
@@ -371,13 +382,94 @@ a{
 /*#endregion*/
 
 
-/* footer */
-footer{
-    background-color: #98B5D1;
-    padding: 15px 15%;
-    display: flex;
-    justify-content: center;  
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
+@media screen and (max-width: 768px) {
+    #main{
+        margin: 0px 10px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        border-bottom: solid #e0e6e8 1.5px;
+    }
+    
+    #cart{
+        width: 100%;
+        padding:30px 0px 10px 0px;
+        margin-left: 0;
+        color: #4a6175;
+        font-weight: bolder;
+        font-size: 22px;
+    }
+    .introduce{
+        margin: 50px 5%;
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 2px 2px 10px #bec0c1; 
+    }
+    .introduce_title{
+        margin: 5px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 5px;
+        font-size: 25px;
+        font-weight: bolder;
+        border-bottom: solid #c4d5e1 3px;
+    }
+    .introduce_title img{
+        display: none;
+    }
+    #introduce_photo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        padding-bottom: 30px;
+    }
+
+    #introduce_photo img{
+        margin: 15px;
+        width: 90%;
+    }
+    #detailed{
+        padding: 30px 30px ;
+        font-size: 20px;
+    }
+    #Q_A{
+        display: flex;
+        flex-direction: column;
+        padding: 25px 10px ;
+    }
+    #create{
+        margin:0px 10px;
+    }
+
+    #create>form>input{
+        margin:18px 5px 5px 5px;
+        width: 100px;
+    }
+    #create>form{
+        margin: 20px 30px;
+    }
+    #allQA_title{
+        display: flex;
+        justify-content: center;
+    }
+    #allQA_title img{
+        width: 20%;
+    }
+    .content{
+        font-weight: bolder;
+        line-height: 30px;
+        margin:0px 30px;
+        padding:15px 30px;
+        color:#556d82;
+        border-bottom:solid #8bb5c2 1px;
+    }
+    #price{
+        display: flex;
+    }
+    
 }
