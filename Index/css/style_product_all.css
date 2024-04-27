@@ -9,11 +9,18 @@
 
     body{
         background-color: #FEFDF7;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     a{
         text-decoration: none;
         color: #4c5f79;
+    }
+    h2{
+        font-size: 36px;
     }
     
 /* #endregion */
@@ -35,7 +42,7 @@
 /* 頁面內容 *//*#region*/
 
 #main{
-    margin: 0px 5%;
+    margin: 0px;
     display: flex;
 }
 
@@ -51,10 +58,10 @@
         color: rgb(87, 114, 141);
         text-decoration: none;
         font-weight: bold;
-        padding-top:10px ;
         padding-bottom: 50px;
         width: 30%;
         min-width: 250px;
+        max-width: 350px;
     }
 
     /* 新品/熱銷 */
@@ -64,7 +71,7 @@
         list-style-type: none;
         color: rgb(87, 114, 141);
         text-decoration: none;
-        font-size: 20px;
+        font-size: 24px;
     }
 
     #sidebar>a:hover{
@@ -78,7 +85,7 @@
         justify-content: center;
         align-items: center;
         padding: 5px 0;
-        font-size: 20px;
+        font-size: 24px;
     }
     
     .sidebar_title p{
@@ -86,16 +93,18 @@
     }
     
     .sidebar_title img{
-        width: 40px; 
-        height: 40px; 
-        padding:5px 15px;
+        width: 13%; 
+        height:13%; 
+        max-width: 40px;
+        max-height: 40px;
+        padding:5px 5%;
     }
     
     #sidebar ul{
         display: flex;
         align-items: start;
         flex-direction: column;
-        padding-left: 30px;
+        padding-left: 8%;
     }
 
     #sidebar li{
@@ -104,7 +113,7 @@
         align-items: center;
         list-style-type: none;
         color: rgb(87, 114, 141);
-        font-size: 18px;
+        font-size: 22px;
         font-weight: bold;
         padding: 13px 0px;
         padding-left: 30PX;
@@ -124,7 +133,6 @@
 
     #sidebar li a:hover{
         color:#77becf ;
-        font-size: 20px;
     }
 
 /*#endregion*/
@@ -136,21 +144,21 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        padding-top:30px ;
+        padding:30px 3%;
         border-left: solid #b0c8df 1.5px;
     }
 
     #product_title{
         display: flex;
         justify-content: space-between;
-        padding: 10px 5%;
+        padding: 20px 3%;
     }
 
     #sort{
         text-align: left;
         border-radius: 5px;
         padding: 5px;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bolder;
         border:0;
         color: #7b8ba0;
@@ -160,7 +168,7 @@
     #product_show{
         width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: start;
         flex-wrap: wrap;
     }
 
@@ -172,10 +180,13 @@
         justify-content: space-around;
         align-items: center;
         width: 17%;
-        height: 280px;
+        min-width: 150px;
+        max-width: 180px;
+        height: 300px;
         border-radius: 10px;
         padding: 30px;
         box-shadow: 2px 2px 8px #d6d7de;
+        font-size: 20px;
     }
 
     .product p{
@@ -209,94 +220,12 @@
 
 @media screen and (max-width: 768px) {
 
-    #main{
-        margin: 10px;
-        display: flex;
-    }
 
-    /* 回到頂部 */
-    #top img{
-        display: none;
-    }
-
-    #sidebar {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        color: rgb(87, 114, 141);
-        text-decoration: none;
-        font-weight: bold;
-        padding-top:10px ;
-        padding-bottom: 50px;
-        width: 500px;
-    }
-
-    /* 新品/熱銷 */
-    #sidebar>a{
-        padding:20px 0px;
-        margin-bottom: 5px;
-        list-style-type: none;
-        color: rgb(87, 114, 141);
-        text-decoration: none;
-    }
-
-    #sidebar>a:hover{
-        background-color: #9bb9d6;
-        color:white ;
-    }
-
-    /* 品牌/價格 */
-    .sidebar_title{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px 0;
-    }
-    
-    .sidebar_title p{
-        padding: 10px 0px;
-    }
-    
-    .sidebar_title img{
-        width: 10%;
-        height: auto;
-        max-width: 40px;
-        max-height: 40px;
-    }
-    
-    #sidebar ul{
-        display: flex;
-        align-items: start;
-        flex-direction: column;
-    }
-
-    #sidebar li{
-        height: 25px;
-        display: flex;
-        align-items: center;
-        list-style-type: none;
-        color: rgb(87, 114, 141);
-        font-weight: bold;
-    }
-
-    #sidebar li a{
-        margin:10px;
-        list-style-type: none;
-        color: rgb(109, 133, 160);
-        text-decoration: none;
-    }
-
-    #sidebar li a:hover{
-        color:#77becf ;
-    }
     #product_title{
         display: flex;
         flex-wrap: wrap;
     }
-    #sort{
-        padding: 0;
-        margin:10px 0 ;
-    }
+    
 
 }
 
@@ -318,15 +247,12 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-        color: rgb(58, 98, 131);
-        text-decoration: none;
-        font-weight: bold;
-        padding-top:10px ;
+        max-width: 100%;
         padding-bottom: 0px;
         width: 100%;
         border-bottom: #8bb5c2 3px double;
     }
-        #sidebar ul{
+    #sidebar ul{
         display: flex;
         padding-left: 0;
         flex-wrap: wrap;
@@ -343,25 +269,21 @@
     #sidebar li a:hover{
         background-color: #9bb9d6;
         color:white ;
-        font-size: 18px;
     }
     
     #sidebar li img{
         display: none;
     }
     #sidebar>a{
-        padding:10px 5px;
+        padding:15px 5px;
         margin-bottom: 5px;
         list-style-type: none;
-        color: rgb(58, 98, 131);
         text-decoration: none;
-        font-size: 20px;
-    }
-    .bp{
-        border-top: #5f7e99 1px solid;
+        font-size: 24px;
     }
     #sidebar li a{
-        padding:5px 15px;
+        padding:5px;
+        margin: 15px 8px;
         list-style-type: none;
         color: rgb(109, 133, 160);
         text-decoration: none;
