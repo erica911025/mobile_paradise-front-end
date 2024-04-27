@@ -22,40 +22,6 @@ a{
 /* #endregion */
 
 
-/* 路徑 *//*#region*/
-
-.path{
-    display: flex;
-    padding: 1px 13%;
-    margin-bottom: 0;
-    background-color: #e6eeef;
-    position: sticky;
-    top:91px; 
-    z-index: 50;       
-}
-
-.path p{
-    margin: 5px;
-    margin-bottom: 10px;
-    color: rgb(137, 139, 142);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.path a{
-    margin: 5px;
-    margin-bottom: 10px;
-    color: rgb(80, 119, 158);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.path a:hover{
-    color: #8bb5c2;
-}
-
-/*#endregion*/
-
 
 
 /* 頁籤 *//*#region*/
@@ -72,7 +38,7 @@ h2{
 }
 
 .title{
-    padding: 15px 40px;
+    padding: 15px 5%;
     background-color: #c2d6e5;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -168,7 +134,7 @@ h3{
 /* 內標題 *//*#region*/
 
     .main_title{
-        margin: 25px 50px;
+        margin: 25px 10%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -182,8 +148,9 @@ h3{
     }
 
     .main_title img{
-        width: 60px; 
-        height: 60px; 
+        max-width: 60px; 
+        width: 10%; 
+        height: auto;  
         padding:5px 15px;
     }
 
@@ -259,10 +226,6 @@ h3{
     }
 
 /*#endregion*/
-
-
-
-
 
 
 /* 訂單資訊表格 *//*#region*/
@@ -376,3 +339,30 @@ border: 1.5px solid #bdb5b5;
 border-radius: 5px;
 }
 /* #endregion  */
+
+
+@media screen and (max-width: 768px) {
+    h2{
+        font-size: 20px;
+    }
+    .buttonOK{
+        font-size: 20px;   
+    }
+    
+    .buttonOK_not{
+        font-size: 20px;   
+    }  
+    table th, table td {
+        font-size: 20px;
+    }
+    #member{
+        padding: 20px 5%;
+        border-top: solid #c4d5e1 5px;
+    }
+    .change{
+        flex-wrap: wrap;
+    }
+    #Email{
+        margin-left: 30px;
+    }
+}

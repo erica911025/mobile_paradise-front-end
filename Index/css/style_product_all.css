@@ -31,137 +31,11 @@
     border-radius: 100px;
 }
 
-@media screen and (max-width: 768px) {
-
-    #main{
-        margin: 10px;
-        display: flex;
-    }
-
-    /* 回到頂部 */
-    #top img{
-        display: none;
-    }
-
-    #sidebar {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        color: rgb(87, 114, 141);
-        text-decoration: none;
-        font-weight: bold;
-        padding-top:10px ;
-        padding-bottom: 50px;
-        width: 500px;
-    }
-
-    /* 新品/熱銷 */
-    #sidebar>a{
-        padding:20px 0px;
-        margin-bottom: 5px;
-        list-style-type: none;
-        color: rgb(87, 114, 141);
-        text-decoration: none;
-        font-size: 10px;
-    }
-
-    #sidebar>a:hover{
-        background-color: #9bb9d6;
-        color:white ;
-    }
-
-    /* 品牌/價格 */
-    .sidebar_title{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px 0;
-        font-size: 10px;
-    }
-    
-    .sidebar_title p{
-        padding: 10px 0px;
-    }
-    
-    .sidebar_title img{
-        display: none;
-    }
-    
-    #sidebar ul{
-        display: flex;
-        align-items: start;
-        flex-direction: column;
-    }
-
-    #sidebar li{
-        height: 25px;
-        display: flex;
-        align-items: center;
-        list-style-type: none;
-        color: rgb(87, 114, 141);
-        font-size: 8px;
-        font-weight: bold;
-        padding: 13px 0px;
-    }
-
-    #sidebar li img{
-        display: none;
-    }
-
-    #sidebar li a{
-        margin:0px;
-        list-style-type: none;
-        color: rgb(109, 133, 160);
-        text-decoration: none;
-    }
-
-    #sidebar li a:hover{
-        color:#77becf ;
-        font-size: 10px;
-    }
-
-}
-
-
-/* 路徑 *//*#region*/
-
-    .path{
-        display: flex;
-        padding: 1px 13%;
-        margin-bottom: 0;
-        background-color: #e6eeef;
-        position: sticky;
-        top:91px; 
-        z-index: 50;       
-    }
-
-    .path p{
-        margin: 5px;
-        margin-bottom: 10px;
-        color: rgb(137, 139, 142);
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .path a{
-        margin: 5px;
-        margin-bottom: 10px;
-        color: rgb(80, 119, 158);
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .path a:hover{
-        color: #8bb5c2;
-    }
-
-/*#endregion*/
-
 
 /* 頁面內容 *//*#region*/
 
 #main{
-    margin: 0px 10%;
+    margin: 0px 5%;
     display: flex;
 }
 
@@ -331,26 +205,175 @@
 
 /*#endregion*/
 
+@media screen and (max-width: 768px) {
 
-@media screen and (max-width: 576px) {
-    #sidebar{
+    #main{
+        margin: 10px;
+        display: flex;
+    }
+
+    /* 回到頂部 */
+    #top img{
         display: none;
     }
+
+    #sidebar {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: rgb(87, 114, 141);
+        text-decoration: none;
+        font-weight: bold;
+        padding-top:10px ;
+        padding-bottom: 50px;
+        width: 500px;
+    }
+
+    /* 新品/熱銷 */
+    #sidebar>a{
+        padding:20px 0px;
+        margin-bottom: 5px;
+        list-style-type: none;
+        color: rgb(87, 114, 141);
+        text-decoration: none;
+    }
+
+    #sidebar>a:hover{
+        background-color: #9bb9d6;
+        color:white ;
+    }
+
+    /* 品牌/價格 */
+    .sidebar_title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 0;
+    }
+    
+    .sidebar_title p{
+        padding: 10px 0px;
+    }
+    
+    .sidebar_title img{
+        display: none;
+    }
+    
+    #sidebar ul{
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    #sidebar li{
+        height: 25px;
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        color: rgb(87, 114, 141);
+        font-weight: bold;
+        padding: 13px 0px;
+    }
+
+    #sidebar li img{
+        display: none;
+    }
+
+    #sidebar li a{
+        margin:0px;
+        list-style-type: none;
+        color: rgb(109, 133, 160);
+        text-decoration: none;
+    }
+
+    #sidebar li a:hover{
+        color:#77becf ;
+    }
+    #product_title{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #sort{
+        padding: 0;
+        margin:10px 0 ;
+    }
+
+}
+
+
+@media screen and (max-width: 576px) {
+    #main{
+        display: flex;
+        flex-direction: column;
+    }
     #product{
-        margin: 0;
+        margin:10px 0;
         padding:20px 0;
         border-left: none;
     }
-    .product{
-        background-color: white;
+    #sidebar ul{
+        display: flex;
+        flex-direction: row;
+        padding-left: 30px;
+    }
+    #sidebar {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        width: 35%;
-        height: 280px;
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 2px 2px 8px #d6d7de;
+        text-align: center;
+        color: rgb(58, 98, 131);
+        text-decoration: none;
+        font-weight: bold;
+        padding-top:10px ;
+        padding-bottom: 0px;
+        width: 100%;
+        border-bottom: #8bb5c2 3px double;
     }
+        #sidebar ul{
+        display: flex;
+        padding-left: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-bottom: 10px;
+    }
+    #sidebar li{
+        height: 10px;
+        display: flex;
+        align-items: center;
+        padding-left: 0;
+        color: rgb(58, 98, 131);
+    }
+    #sidebar li a:hover{
+        background-color: #9bb9d6;
+        color:white ;
+        font-size: 18px;
+    }
+    #sidebar>a{
+        padding:10px 5px;
+        margin-bottom: 5px;
+        list-style-type: none;
+        color: rgb(58, 98, 131);
+        text-decoration: none;
+        font-size: 20px;
+    }
+    .bp{
+        border-top: #5f7e99 1px solid;
+    }
+    #sidebar li a{
+        padding:5px 15px;
+        list-style-type: none;
+        color: rgb(109, 133, 160);
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    #product_title{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    #sort{
+        padding: 0;
+        margin:10px 0 ;
+    }
+
+
 }
