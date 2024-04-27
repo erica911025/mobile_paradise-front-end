@@ -258,7 +258,10 @@
     }
     
     .sidebar_title img{
-        display: none;
+        width: 10%;
+        height: auto;
+        max-width: 40px;
+        max-height: 40px;
     }
     
     #sidebar ul{
@@ -274,15 +277,10 @@
         list-style-type: none;
         color: rgb(87, 114, 141);
         font-weight: bold;
-        padding: 13px 0px;
-    }
-
-    #sidebar li img{
-        display: none;
     }
 
     #sidebar li a{
-        margin:0px;
+        margin:10px;
         list-style-type: none;
         color: rgb(109, 133, 160);
         text-decoration: none;
@@ -346,6 +344,10 @@
         background-color: #9bb9d6;
         color:white ;
         font-size: 18px;
+    }
+    
+    #sidebar li img{
+        display: none;
     }
     #sidebar>a{
         padding:10px 5px;
