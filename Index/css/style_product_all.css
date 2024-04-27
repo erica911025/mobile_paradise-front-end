@@ -61,7 +61,7 @@
         padding-bottom: 50px;
         width: 30%;
         min-width: 250px;
-        max-width: 350px;
+        max-width: 400px;
     }
 
     /* 新品/熱銷 */
@@ -108,7 +108,7 @@
     }
 
     #sidebar li{
-        height: 25px;
+        height: 35px;
         display: flex;
         align-items: center;
         list-style-type: none;
