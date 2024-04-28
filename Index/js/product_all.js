@@ -336,6 +336,7 @@ window.onload = function() {
         })
     })
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     const sidebarBrand = document.getElementById('sidebar_Brand');
     const sidebarPrice = document.getElementById('sidebar_Price');
@@ -371,6 +372,29 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             sidebar.classList.add('collapsed');
         }
+    }
+
+    
+    const left = document.getElementById('left');
+    const closeBtn = document.getElementById('close');
+    const screenWidth = window.innerWidth;
+
+    console.log("close");
+    let isCollapsed = true; // 初始狀態為收合
+
+    if (screenWidth > 576) {
+        closeBtn.style.display = 'block';
+        closeBtn.addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止默認行為
+            // 切換左半部(sidebar)的收合狀態
+            left.style.display = isCollapsed ? 'none' : 'block';
+            isCollapsed = !isCollapsed; // 切換狀態
+            console.log("123");
+        });
+    } else {
+        closeBtn.style.display = 'none';
+        left.style.display = 'block';
+        Classification.style.display = 'block';
     }
 
 // 切換箭頭圖示的可見性
@@ -417,28 +441,3 @@ window.addEventListener('resize', function() {
 });
 
 
-window.addEventListener('resize', function() { 
-    const left = document.getElementById('left');
-    const closeBtn = document.getElementById('close');
-    const Classification = document.getElementById('Classification'); // 添加此行以獲取 Classification 元素
-    const screenWidth = window.innerWidth;
-
-    let isCollapsed = true; // 初始狀態為收合
-
-    if (screenWidth > 576) {
-        closeBtn.style.display = 'block';
-        closeBtn.addEventListener('click', function() {
-            // 切換左半部(sidebar)的收合狀態
-            left.style.display = isCollapsed ? 'none' : 'block';
-            isCollapsed = !isCollapsed; // 切換狀態
-
-            // 移動 close 按鈕到最左邊
-            closeBtn.classList.toggle('moveToLeft');
-        });
-    } else {
-        closeBtn.style.display = 'none';
-        left.style.display = 'block';
-        Classification.style.display = 'block';
-        isCollapsed = true; // 重新設置狀態
-    }
-});
