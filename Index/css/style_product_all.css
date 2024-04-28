@@ -63,6 +63,10 @@
         min-width: 250px;
         max-width: 400px;
     }
+    #Classification{
+        color: rgb(87, 114, 141);
+        font-weight: bold;
+    }
 
     /* 新品/熱銷 */
     #sidebar>a{
@@ -136,6 +140,8 @@
     }
 
 /*#endregion*/
+
+
 
 
 /* 右半部(產品內容) *//*#region*/
@@ -264,7 +270,8 @@
         display: flex;
         align-items: center;
         padding-left: 0;
-        color: rgb(58, 98, 131);
+        color: rgb(89, 148, 197);
+        margin: 5px 0;
     }
     #sidebar li a:hover{
         background-color: #9bb9d6;
@@ -283,9 +290,9 @@
     }
     #sidebar li a{
         padding:5px;
-        margin: 15px 8px;
+        margin: 15px 10px;
         list-style-type: none;
-        color: rgb(109, 133, 160);
+        color: rgb(118, 154, 162);
         text-decoration: none;
         border-radius: 5px;
     }
@@ -302,5 +309,14 @@
         margin: 0px ;
     }
 
+
+    #_Brand.collapsed,
+    #_Price.collapsed {
+        display: none;
+    }
+
+    #sidebar.collapsed {
+        display: none;
+    }
 
 }

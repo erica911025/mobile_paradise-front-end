@@ -76,17 +76,18 @@
             <a href="./product_all.html" >本週新品上架</a>
     </div>
     </div>
-  
+   
     
 
     <!-- 頁面內容 -->
     <div id="main">
     
         <!-- 左半部(sidebar) -->
-        <div id="sidebar">
-            <div class="sidebar_title" style=" background-color: #d3e5e6; border-bottom: 2px solid #a2b5cf;">
-                <p>商品分類</p>
+        <div >
+            <div id="Classification" class="sidebar_title" style=" background-color: #d3e5e6; border-bottom: 2px solid #a2b5cf;">
+                <p> 商品分類 </p>
             </div>
+            <div id="sidebar">
             <a href="#t" id="ALLProduct">ALL 所有商品</a>
             <a href="#t" id="HotProduct">TOP 熱銷商品</a>
 
@@ -99,7 +100,7 @@
                     <img src="image/icon_dots.png" >
                 </div>
 
-                <ul>
+                <ul id="_Brand" class="collapsed">
                     <li>
                         <img src="image/arrow-right.png" >
                         <a href="#t" dataset="Apple">Apple</a></li>
@@ -157,7 +158,7 @@
                         <img src="image/icon_dots.png" >
                     </div>
                     
-                    <ul>
+                    <ul id="_Price" class="collapsed">
                         <li>
                             <img src="image/arrow-right.png" >
                             <a href="#t" data-MaxPrice="5000" >5,000以下</a>
@@ -191,7 +192,9 @@
                             <a href="#t" data-MinPrice="40000">40,000以上</a>
                         </li>
                     </ul>
-                </div>      
+            </div>   
+            </div>
+   
                 
         </div>
     

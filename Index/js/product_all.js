@@ -340,3 +340,50 @@ window.onload = function() {
         })
     })
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarBrand = document.getElementById('sidebar_Brand');
+    const sidebarPrice = document.getElementById('sidebar_Price');
+    const Brand = document.getElementById('_Brand');
+    const Price = document.getElementById('_Price');
+    const Classification = document.getElementById('Classification');
+    const sidebar = document.getElementById('sidebar');
+
+    // 監聽品牌手機和價格分類的連結點擊事件
+    sidebarBrand.addEventListener('click', function() {
+        toggleSidebarContent(Brand);
+    });
+
+    sidebarPrice.addEventListener('click', function() {
+        toggleSidebarContent(Price);
+    });
+
+    Classification.addEventListener('click', function() {
+        toggleSidebarContent(sidebar);
+    });
+
+    // 函數來切換sidebar內容的顯示狀態
+    function toggleSidebarContent(sidebar) {
+        // 檢查當前的顯示狀態
+        const isCollapsed = sidebar.classList.contains('collapsed');
+
+        // 如果是收合的狀態，則展開；如果是展開的狀態，則收合
+        if (isCollapsed) {
+            sidebar.classList.remove('collapsed');
+        } else {
+            sidebar.classList.add('collapsed');
+        }
+    }
+
+    function toggleSidebarContent(sidebar) {
+        // 檢查當前的顯示狀態
+        const isCollapsed = sidebar.classList.contains('collapsed');
+
+        // 如果是收合的狀態，則展開；如果是展開的狀態，則收合
+        if (isCollapsed) {
+            sidebar.classList.remove('collapsed');
+        } else {
+            sidebar.classList.add('collapsed');
+        }
+    }
+});
