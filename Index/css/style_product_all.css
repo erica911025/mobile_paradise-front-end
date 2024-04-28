@@ -60,12 +60,19 @@
         font-weight: bold;
         padding-bottom: 50px;
         width: 30%;
-        min-width: 250px;
+        min-width: 300px;
         max-width: 400px;
+
     }
-    #Classification{
+    #Classification p{
         color: rgb(87, 114, 141);
         font-weight: bold;
+        text-align: center;
+        display: flex;
+        font-size: 26px;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
     }
 
     /* 新品/熱銷 */
@@ -234,6 +241,8 @@
     
 
 }
+
+
 
 
 @media screen and (max-width: 576px) {
