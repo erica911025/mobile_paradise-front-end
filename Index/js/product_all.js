@@ -381,22 +381,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log("close");
     let isCollapsed = true; // 初始狀態為收合
-
+closeBtn.addEventListener('click', function(event) {
     if (screenWidth > 576) {
         closeBtn.style.display = 'block';
-        closeBtn.addEventListener('click', function(event) {
+        
             event.preventDefault(); // 阻止默認行為
             // 切換左半部(sidebar)的收合狀態
             left.style.display = isCollapsed ? 'none' : 'block';
             isCollapsed = !isCollapsed; // 切換狀態
             console.log("123");
-        });
+        
     } else {
         closeBtn.style.display = 'none';
         left.style.display = 'block';
         Classification.style.display = 'block';
     }
-
+});
 // 切換箭頭圖示的可見性
 function toggleArrowVisibility() {
     const screenWidth = window.innerWidth; // 獲取螢幕寬度
@@ -431,6 +431,7 @@ window.addEventListener('resize', function() {
         
     }
     else{
+        closeBtn.style.display = 'none';
         Classification.style.display = 'block';
         
     }
