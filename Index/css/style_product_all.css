@@ -208,7 +208,7 @@
     #product_show{
         width: 100%;
         display: flex;
-        justify-content: start;
+        justify-content: space-around;
         flex-wrap: wrap;
     }
 
