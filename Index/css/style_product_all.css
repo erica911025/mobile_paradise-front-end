@@ -44,12 +44,20 @@
 #main{
     margin: 0px;
     display: flex;
+    
 }
 
 /*#endregion*/
 
 
 /* 左半部(sidebar) *//*#region*/
+    #left{
+        height: calc(100vh - 160px);
+        min-width:300px; 
+        overflow-y: auto; 
+        position: sticky;
+        top: 150px;
+    }
 
     #sidebar {
         display: flex;
@@ -59,13 +67,17 @@
         text-decoration: none;
         font-weight: bold;
         padding-bottom: 50px;
-        width: 30%;
-        min-width: 250px;
-        max-width: 400px;
+
     }
-    #Classification{
+    #Classification p{
         color: rgb(87, 114, 141);
         font-weight: bold;
+        text-align: center;
+        display: flex;
+        font-size: 26px;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
     }
 
     /* 新品/熱銷 */
@@ -108,7 +120,7 @@
         display: flex;
         align-items: start;
         flex-direction: column;
-        padding-left: 8%;
+        padding-left: 10px;
     }
 
     #sidebar li{
@@ -234,6 +246,8 @@
     
 
 }
+
+
 
 
 @media screen and (max-width: 576px) {

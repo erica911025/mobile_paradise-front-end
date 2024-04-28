@@ -336,7 +336,6 @@ window.onload = function() {
         })
     })
 }
-
 document.addEventListener('DOMContentLoaded', function() {
     const sidebarBrand = document.getElementById('sidebar_Brand');
     const sidebarPrice = document.getElementById('sidebar_Price');
@@ -344,6 +343,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const Price = document.getElementById('_Price');
     const Classification = document.getElementById('Classification');
     const sidebar = document.getElementById('sidebar');
+    const downArrow = document.getElementById('down');
+    const upArrow = document.getElementById('up');
 
     // 監聽品牌手機和價格分類的連結點擊事件
     sidebarBrand.addEventListener('click', function() {
@@ -356,6 +357,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     Classification.addEventListener('click', function() {
         toggleSidebarContent(sidebar);
+        toggleArrowVisibility();
     });
 
     // 函數來切換sidebar內容的顯示狀態
@@ -371,16 +373,44 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function toggleSidebarContent(sidebar) {
-        // 檢查當前的顯示狀態
-        const isCollapsed = sidebar.classList.contains('collapsed');
-
-        // 如果是收合的狀態，則展開；如果是展開的狀態，則收合
-        if (isCollapsed) {
-            sidebar.classList.remove('collapsed');
+// 切換箭頭圖示的可見性
+function toggleArrowVisibility() {
+    const screenWidth = window.innerWidth; // 獲取螢幕寬度
+    const downArrow = document.getElementById('down');
+    const upArrow = document.getElementById('up');
+    const Classification = document.getElementById('Classification');
+    
+    if (screenWidth < 576) { // 判斷螢幕寬度是否小於 576px
+        Classification.style.display = 'block'; 
+        if (downArrow.style.display === 'none') {
+            downArrow.style.display = 'block'; // 顯示 down 箭頭
+            upArrow.style.display = 'none'; // 隱藏 up 箭頭
         } else {
-            sidebar.classList.add('collapsed');
+            downArrow.style.display = 'none'; // 隱藏 down 箭頭
+            upArrow.style.display = 'block'; // 顯示 up 箭頭
         }
     }
+    else { // 當螢幕寬度大於等於 576px 時
+        Classification.style.display = 'none'; // 隱藏 down 箭頭
+    }
+}
+
+// 頁面加載時初始設置箭頭圖示的可見性
+toggleArrowVisibility();
+// 監聽視窗大小改變事件
+window.addEventListener('resize', function() { 
+    const Classification = document.getElementById('Classification');
+    const screenWidth = window.innerWidth; // 獲取螢幕寬度
+    if (screenWidth > 576) { // 判斷螢幕寬度是否小於 576px
+        toggleArrowVisibility();
+        Classification.style.display = 'none';
+    }
+    else{
+        Classification.style.display = 'block';
+    }
+
+});
+
+
 });
 
