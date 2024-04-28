@@ -404,7 +404,7 @@ function toggleArrowVisibility() {
     const upArrow = document.getElementById('up');
     const Classification = document.getElementById('Classification');
     
-    if (screenWidth < 576) { // 判斷螢幕寬度是否小於 576px
+    if (screenWidth <= 576) { // 判斷螢幕寬度是否小於 576px
         Classification.style.display = 'block'; 
         if (downArrow.style.display === 'none') {
             downArrow.style.display = 'block'; // 顯示 down 箭頭
@@ -428,6 +428,7 @@ window.addEventListener('resize', function() {
     if (screenWidth > 576) { // 判斷螢幕寬度是否小於 576px
         toggleArrowVisibility();
         Classification.style.display = 'none';
+        closeBtn.style.display = 'block';
         
     }
     else{
