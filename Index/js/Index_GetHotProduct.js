@@ -53,7 +53,7 @@ fetch(url, { credentials: 'include' })
     const nextBtn = document.querySelector('.next-btn');
     let currentIndex = 0;
     const totalItems = 8; // 商品總數
-    const itemsPerPage = 4; // 每頁顯示的商品數量
+    const itemsPerPage = 5.6; // 每頁顯示的商品數量
     const itemWidth = 178; // 每個商品的寬度
 
     function showSlide(index) {
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const nextBtn = document.querySelector('#nextBtn');
 
   // 將克隆的圖片添加到carouselImages中
-  const firstClone = carouselImages[0].cloneNode(true);
+  /*const firstClone = carouselImages[0].cloneNode(true);
   const lastClone = carouselImages[carouselImages.length - 1].cloneNode(true);
   firstClone.id = 'firstClone'; // 添加ID
   firstClone.classList.add('carousel-image'); // 添加類名
@@ -99,18 +99,17 @@ document.addEventListener('DOMContentLoaded', function () {
   lastClone.classList.add('carousel-image'); // 添加類名
   carouselSlide.appendChild(firstClone);
   carouselSlide.insertBefore(lastClone, carouselImages[0]);
-  carouselImages = document.querySelectorAll('.carousel-slide_img img');
+  carouselImages = document.querySelectorAll('.carousel-slide_img img');*/
 
   // Counter
-  let counter = 1;
+  let counter = 0;
   const size = carouselImages[0].clientWidth;
-
   carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-
+  console.log(carouselSlide.style.transform)
   // Button listeners
-  nextBtn.addEventListener('click', () => {
+  /*nextBtn.addEventListener('click', () => {
       if (counter >= carouselImages.length - 1) {
-          counter = 1;
+          counter = 0;
           carouselSlide.style.transition = 'none';
           carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
           return;
@@ -121,8 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   prevBtn.addEventListener('click', () => {
-      if (counter <= 0) {
-          counter = carouselImages.length - 2;
+      if (counter < 0) {
+          counter = carouselImages.length - 3;
           carouselSlide.style.transition = 'none';
           carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
           return;
@@ -130,18 +129,47 @@ document.addEventListener('DOMContentLoaded', function () {
       counter--;
       carouselSlide.style.transition = 'transform 0.4s ease-in-out';
       carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
-  });
+  });*/
+  const nextSlide = () => {
+    if (counter >= carouselImages.length - 1) {
+        counter = 0;
+    } else {
+        counter++;
+    }
+    carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+};
 
-  carouselSlide.addEventListener('transitionend', () => {
+// Function to move to previous slide
+const prevSlide = () => {
+    if (counter <= 0) {
+        counter = carouselImages.length - 1;
+    } else {
+        counter--;
+    }
+    carouselSlide.style.transition = 'transform 0.4s ease-in-out';
+    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+};
+
+// Button listeners
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+// Auto slide
+setInterval(nextSlide, 3000);
+
+  /*carouselSlide.addEventListener('transitionend', () => {
       if (carouselImages[counter].id === 'lastClone') {
           carouselSlide.style.transition = 'none';
           counter = 1;
           carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+          console.log('y')
       }
-      if (carouselImages[counter].id === 'firstClone') {
+      else if (carouselImages[counter].id === 'firstClone') {
           carouselSlide.style.transition = 'none';
-          counter = carouselImages.length - 2;
+          counter = carouselImages.length - 3;
           carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+          console.log('y')
       }
-  });
+  });*/
 });

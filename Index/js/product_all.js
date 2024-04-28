@@ -14,8 +14,6 @@ async function getALLProduct(sortway, nowPage) {
         })
         .then(data => {
             data.Message.forEach(Items => {
-                console.log(Items);
-                console.log("getALLProduct_sortway", sortway)
                 ShowProduct(Items, sortway);
             });
         })
@@ -138,7 +136,7 @@ async function ShowProductHot(data) {
 
 }
 
-async function ShowProduct(data, sortway) {
+async function ShowProduct(data) {
 
     data.Items.forEach(item => {
         const show = document.getElementById('product_show');
@@ -174,8 +172,8 @@ async function ShowProduct(data, sortway) {
 
     const createPageLink = (pageNumber) => {
         const link = document.createElement('a');
-
-        link.href = `./product_all.html?value=${value}&sortway=${sortway}&nowPage=${pageNumber}`;
+        
+        link.href = '#';
         link.textContent = pageNumber;
         if (pageNumber === currentPage) {
             link.style.fontWeight = 'bold'; // 標記當前頁碼
@@ -186,14 +184,22 @@ async function ShowProduct(data, sortway) {
     const addPageLink = (pageNumber) => {
         if (pageNumber > 0 && pageNumber <= maxPage) {
             const link = createPageLink(pageNumber);
+            link.className = 'Page';
+            link.addEventListener('click',function(){
+                nowPage = link.textContent;
+                getsort(value, Brand, MaxPrice, MinPrice);
+            })
             page.appendChild(link);
-            console.log("link", link);
         }
     };
 
     const addNavigationLink = (pageNumber, text) => {
         const link = createPageLink(pageNumber);
         link.textContent = text;
+        link.addEventListener('click',function(){
+            nowPage = pageNumber;
+            getsort(value, Brand, MaxPrice, MinPrice);
+        })
         page.appendChild(link);
     };
 
@@ -215,17 +221,8 @@ async function ShowProduct(data, sortway) {
     }
 }
 
-function getCurrentPage() {
-    // 這裡實現獲取當前頁碼的邏輯，例如從 URL 中獲取或者從 DOM 中獲取
-    // 這裡假設從 URL 中獲取當前頁碼
-    const urlParams = new URLSearchParams(window.location.search);
-    const nowPage = urlParams.get('nowPage');
-    return nowPage ? parseInt(nowPage) : 1; // 如果 URL 中沒有指定當前頁碼，則默認為第 1 頁
-}
-
 async function getsort(value, Brand, MaxPrice, MinPrice) {
     let sortway = sortBtn.value;
-    const nowPage = getCurrentPage(); // 獲取當前頁碼
     getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage);
 }
 
@@ -276,11 +273,12 @@ let value;
 let Brand;
 let MaxPrice;
 let MinPrice;
+let nowPage = 1;
 function handleSortChange() {
     const show = document.getElementById('product_show');
     show.innerHTML = '';
     sortway = sortBtn.value;
-    const nowPage = getCurrentPage(); // 獲取當前頁碼
+    nowPage = 1;
     console.log(value, sortway, Brand, MaxPrice, MinPrice, nowPage)
     getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage);
 }
@@ -289,8 +287,6 @@ window.onload = function() {
     const UrlParams = new URLSearchParams(window.location.search);
     value = UrlParams.get('value');
     Brand = UrlParams.get('brand');
-    
-    const nowPage = getCurrentPage(); // 獲取當前頁碼
     getsort(value, Brand, MaxPrice, MinPrice);
     sortBtn.addEventListener('change', handleSortChange);
     const All = document.getElementById('ALLProduct');
@@ -300,7 +296,7 @@ window.onload = function() {
         sortBtn.addEventListener('change', handleSortChange);
         event.preventDefault();
         value = 0;
-        const nowPage = getCurrentPage(); // 獲取當前頁碼
+        nowPage = 1; // 獲取當前頁碼
         getsort(value, '', '', '', '', nowPage);
     })
     const Hot = document.getElementById('HotProduct');
@@ -321,7 +317,7 @@ window.onload = function() {
             sortBtn.removeEventListener('change', handleSortChange);
             sortBtn.addEventListener('change', handleSortChange);
             value = 2;
-            const nowPage = getCurrentPage(); // 獲取當前頁碼
+            nowPage = 1;
             getsort(value, Brand, '', '', '', nowPage);
         })
     })
@@ -335,7 +331,7 @@ window.onload = function() {
             sortBtn.removeEventListener('change', handleSortChange);
             sortBtn.addEventListener('change', handleSortChange);
             value = 3;
-            const nowPage = getCurrentPage(); // 獲取當前頁碼
+            nowPage = 1; // 獲取當前頁碼
             getsort(value, '', MaxPrice, MinPrice, '', nowPage);
         })
     })
@@ -387,3 +383,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
