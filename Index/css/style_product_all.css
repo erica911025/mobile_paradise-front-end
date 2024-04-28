@@ -151,6 +151,23 @@
         color:#77becf ;
     }
 
+    #close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #d9e1ef;
+        padding: 1px;
+        height: calc(100vh);
+        overflow-y: auto; 
+        position:fixed;
+        top: 0;
+        left: 1px;
+        font-weight: bold;
+        font-size: 20px;
+        color: #5f7e99;
+    }
+    
+
 /*#endregion*/
 
 
@@ -159,9 +176,14 @@
 /* 右半部(產品內容) *//*#region*/
 
     #product{
+        flex: 1; /* 讓右半部分填滿剩餘空間 */
+        overflow-y: auto; /* 垂直方向溢出時顯示滾動條 */
+        padding-left: 10px; /* 加入左側間距 */
+        padding-right: 10px; /* 加入右側間距 */
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
         padding:30px 3%;
         border-left: solid #b0c8df 1.5px;
     }
@@ -257,6 +279,12 @@
     }
     #product{
         border-left: none;
+    }
+    #left{
+        height: auto;
+        min-width:auto; 
+        overflow-y: auto; 
+        top:auto;
     }
     #sidebar ul{
         display: flex;

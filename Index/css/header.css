@@ -179,4 +179,5 @@ footer{
     color: white;
     font-weight: bold;
     font-size: 18px;
+    z-index: 10;
 }
