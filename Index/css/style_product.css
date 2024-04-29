@@ -163,7 +163,6 @@ a{
         display: flex;
         align-items: center;
         margin: 10px;
-        width: 100%;
     }
 
     #price>h3{
@@ -182,9 +181,9 @@ a{
         border: 0;
         border-radius: 10px;
         font-weight: bolder;
-        font-size: 20px;
-        color: #425068;
-        background-color: #cbd6e9;
+        font-size: 22px;
+        color: #44586b;
+        background-color: #d7e4ef;
     }
 
     #submit:hover{
@@ -308,7 +307,7 @@ a{
         font-weight: bolder;
         border: solid #ccdbe7 2px;
         border-radius: 50px;
-        font-size: 20px;
+        font-size: 22px;
     }
 
     #create>form>input:hover{
@@ -322,7 +321,7 @@ a{
         resize: none;
         border: 1.5px solid #d0d8e8;
         border-radius: 5px;
-        font-size: 20px;
+        font-size: 22px;
     }
 
 
@@ -346,7 +345,7 @@ a{
         line-height: 35px;
         margin:0px 50px;
         padding:20px 30px;
-        font-size: 18px;
+        font-size: 22px;
         color:#556d82;
         border-bottom:solid #8bb5c2 1px;
     }
@@ -407,7 +406,8 @@ a{
     }
     #detailed{
         padding: 30px 30px ;
-        font-size: 20px;
+        font-size: 22px;
+        font-weight: bold;
     }
     #Q_A{
         display: flex;
@@ -442,6 +442,17 @@ a{
     }
     #price{
         display: flex;
+        justify-content: start;
+    }
+    .price_{
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        
+    }
+
+    #submit{
+        margin: 10px 20px;
     }
     
 }
