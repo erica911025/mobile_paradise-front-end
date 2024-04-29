@@ -81,10 +81,14 @@ async function getProductByPrice(sortway, MaxPrice, MinPrice, nowPage) {
     var url;
     console.log(value,MaxPrice,MinPrice)
     if (MinPrice != null && MaxPrice != null) {
+        MaxPrice = numberWithCommas(MaxPrice); // 將最大價格轉換為千分位格式
+        MinPrice = numberWithCommas(MinPrice); // 將最小價格轉換為千分位格式
         url = `http://localhost:5193/api/Paradise/GetProduct?MaxPrice=${MaxPrice}&MinPrice=${MinPrice}&sortway=${sortway}&nowPage=${nowPage}`;
     } else if (MinPrice != null) {
+        MinPrice = numberWithCommas(MinPrice); // 將最小價格轉換為千分位格式
         url = `http://localhost:5193/api/Paradise/GetProduct?MinPrice=${MinPrice}&sortway=${sortway}&nowPage=${nowPage}`;
     } else if (MaxPrice != null) {
+        MaxPrice = numberWithCommas(MaxPrice); // 將最大價格轉換為千分位格式
         url = `http://localhost:5193/api/Paradise/GetProduct?MaxPrice=${MaxPrice}&sortway=${sortway}&nowPage=${nowPage}`;
     }
     await fetch(url, {
@@ -110,6 +114,7 @@ async function getProductByPrice(sortway, MaxPrice, MinPrice, nowPage) {
             console.log(error)
         })
 }
+
 
 async function ShowProductHot(data) {
 
@@ -258,8 +263,16 @@ async function getProduct(value, sortway, Brand, MaxPrice, MinPrice, nowPage) {
             show.innerHTML = '';
             console.log(MaxPrice, MinPrice)
             if (MinPrice != null && MaxPrice != null) {
-                a.textContent = `${MinPrice}~${MaxPrice}`
-                h2.textContent = `${MinPrice}~${MaxPrice}`;
+                max=parseInt(MaxPrice);
+                min=parseInt(MinPrice);
+                var Max = numberWithCommas(max); // 將最大價格轉換為千分位格式
+                var Min = numberWithCommas(min); // 將最小價格轉換為千分位格式
+                MinPrice.toLocaleString(undefined, { maximumFractionDigits: 0 });
+                console.log("123",Min);
+                console.log("123",Max);
+
+                a.textContent = `${Min}~${Max}`;
+                h2.textContent = `${Min}~${Max}`;
             } else if (MaxPrice != null) {
                 a.textContent = "5,000以下"
                 h2.textContent = "5,000以下";
