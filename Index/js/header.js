@@ -83,37 +83,43 @@ function SetLogoutBtn() {
     });
 }
 
-// function SetLogoutBtn(){
-//     const navMain = document.querySelector('.header:nth-child(2) .nav_main');
-//     const navDiv = document.createElement('div');
-//     navDiv.className = "nav2";
-//     const navLogout = document.createElement('a');
-//     navLogout.href = "";
-//     navLogout.textContent = "登出"
-//     navLogout.className = "Logout"
-//     navMain.appendChild(navDiv);
-//     navDiv.appendChild(navLogout);
-//     navLogout.addEventListener('click', function(event){
-//         event.preventDefault();
-//         const xhr = new XMLHttpRequest();
-//         xhr.withCredentials = true;
-//         xhr.open('Delete','http://localhost:5193/api/Member/',true);
-//         xhr.setRequestHeader('Content-Type', 'application/json');
-//         xhr.onreadystatechange = function() {
-//             if (xhr.readyState === XMLHttpRequest.DONE) {
-//                 if (xhr.status === 200) {
-//                     alert('已登出')
-//                     location.reload();
-//                 } else {
-//                    console.error('錯誤',xhr.responseText);
-//                    alert("錯誤")
-//                 }
-//             }
-//         };
-//         xhr.send();
-//     })
-// }
 document.addEventListener('DOMContentLoaded', function(){
     updateHeader();
 }
 );
+document.addEventListener('DOMContentLoaded', function() {
+    const navList = document.querySelectorAll('.n');
+    const close = document.getElementById('close');
+    const hid= document.getElementById('hid');
+
+    function updateDisplay() {
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth <= 768) {
+            close.style.display = 'block';
+            navList.forEach(function(navItem) {
+                navItem.style.display = 'none';
+                hid.style.display = 'none';
+            });
+        } else {
+            close.style.display = 'none';
+            navList.forEach(function(navItem) {
+                navItem.style.display = 'block';
+            });
+        }
+    }
+
+    updateDisplay(); // 初始設置
+
+    close.addEventListener('click', function(event) {
+            if (hid.style.display === 'none') {
+                hid.style.display = 'flex';
+            } else {
+                hid.style.display = 'none';
+            }
+
+        event.preventDefault();
+    });
+
+    window.addEventListener('resize', updateDisplay); // 在視窗大小改變時更新顯示
+});
