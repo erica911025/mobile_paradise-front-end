@@ -1,3 +1,6 @@
+
+
+// 在 fetch 請求中使用 fetch API 從 API 端點獲取購物車項目並將它們呈現在頁面上
 fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
     .then(response => {
         if (!response.ok) {
@@ -11,19 +14,19 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
         itemContainer.innerHTML = '';
 
         console.log(data);
-        let total = 0
+        let total = 0;
 
-        if(data && data.length <= 0){
-            const button=document.getElementById("button");
-            const fare=document.getElementById("fare");
-            const total=document.getElementById("total");
-            button.style.display='none';
-            fare.style.display='none';
-            total.style.display='none';
+        if (data && data.length <= 0) {
+            const button = document.getElementById("button");
+            const fare = document.getElementById("fare");
+            const totalElement = document.getElementById("total"); // 更正此處的變數名稱以避免與上面的 total 變數衝突
+            button.style.display = 'none';
+            fare.style.display = 'none';
+            totalElement.style.display = 'none';
 
             const main = document.querySelector('.main');
             const none = document.createElement('h1');
-            none.id='none';
+            none.id = 'none';
             none.textContent = "購物車無商品";
             main.appendChild(none);
         }
@@ -32,12 +35,96 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
             data.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('content');
+
                 itemElement.innerHTML = `
                     <p>品名：${item.itemName}</p>
                     <p>規格：${item.space} / ${item.color}</p>
-                    <p>數量：${item.itemNum}</p>
-                    <p>單價：${item.itemPrice} <a href="" class="delete"><img src="image/trash.png" alt="" class="delete"></a></p> <!-- 修改此行 -->
+                    <div id="numbox">
+                        <p>數量：</p>
+                        <div class="numbox" >
+                            <button class="min" type="button" > - </button>
+                            <input class="num" type="number" id="val_${item.id}" value="${item.itemNum}"/>
+                            <button class="plus" type="button" > + </button>
+                        </div>                        
+                    </div>
+
+                    <p>單價：${item.itemPrice} <a href="" class="delete"><img src="image/trash.png" alt="" class="delete"></a></p>
                 `;
+
+                const minButton = itemElement.querySelector('.min');
+                const plusButton = itemElement.querySelector('.plus');
+
+                plusButton.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const Id = item.id;
+                    let Num = parseInt(document.getElementById(`val_${item.id}`).value);
+                    
+                    // 執行增加數量的操作
+                    Num++;
+                    
+                    // 更新後端購物車項目的數量
+                    fetch(`http://localhost:5193/api/Cart/UpdateItemNum`, { 
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ Id: Id, itemNum: Num }), // 使用更新後的數量
+                        credentials: 'include'
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('伺服器回應錯誤');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // 成功更新後，同步更新介面顯示的數量
+                        const numInput = itemElement.querySelector('.num');
+                        numInput.value = Num; // 將輸入框的值設置為更新後的數量
+                        console.log(Num);
+                    })
+                    .catch(error => {
+                        console.error('發生錯誤:', error);
+                    });
+                });
+                
+                minButton.addEventListener('click', function(event) {
+                    event.preventDefault(); 
+                    const Id = item.id;
+                    let Num = parseInt(document.getElementById(`val_${item.id}`).value);
+                    
+                    // 執行減少數量的操作
+                    if (Num > 1) {
+                        Num--;
+                        
+                        // 更新後端購物車項目的數量
+                        fetch(`http://localhost:5193/api/Cart/UpdateItemNum`, { 
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ Id: Id, itemNum: Num }), // 使用更新後的數量
+                            credentials: 'include'
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('伺服器回應錯誤');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            // 成功更新後，同步更新介面顯示的數量
+                            const numInput = itemElement.querySelector('.num');
+                            numInput.value = Num; // 將輸入框的值設置為更新後的數量
+                            console.log(Num);
+                        })
+                        .catch(error => {
+                            console.error('發生錯誤:', error);
+                        });
+                    }
+                });
+                
+
 
                 const deleteButton = itemElement.querySelector('.delete');
 
@@ -46,7 +133,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
 
                     console.log("123");
 
-                    const Id=item.id;
+                    const Id = item.id;
 
                     console.log(Id);
                     fetch(`http://localhost:5193/api/Cart`, { 
@@ -78,7 +165,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
             });
         }
         console.log(total);
-        const h2 = document.querySelector(".total")
+        const h2 = document.querySelector(".total");
         h2.textContent = `總計：$${total}`;
     })
     .catch(error => {
@@ -86,4 +173,3 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
         // alert('請先登入');  
         // window.location.href = './login.html';
     });
-
