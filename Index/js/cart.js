@@ -79,6 +79,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                                     .then(data => {
                                         // 成功更新後，同步更新介面顯示的數量
                                         console.log("數量更新成功:", Num);
+                                        location.reload();
                                     })
                                     .catch(error => {
                                         console.error('發生錯誤:', error);
@@ -116,6 +117,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                         const numInput = itemElement.querySelector('.num');
                         numInput.value = Num; // 將輸入框的值設置為更新後的數量
                         console.log(Num);
+                        location.reload();
                     })
                     .catch(error => {
                         console.error('發生錯誤:', error);
@@ -151,6 +153,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                             const numInput = itemElement.querySelector('.num');
                             numInput.value = Num; // 將輸入框的值設置為更新後的數量
                             console.log(Num);
+                            location.reload();
                         })
                         .catch(error => {
                             console.error('發生錯誤:', error);
