@@ -1,4 +1,7 @@
 
+const numberWithCommas = (number) => {
+    return number.toLocaleString(undefined, { maximumFractionDigits: 0 });
+};
 
 // 在 fetch 請求中使用 fetch API 從 API 端點獲取購物車項目並將它們呈現在頁面上
 fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
@@ -35,6 +38,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
             data.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('content');
+                money=numberWithCommas(item.itemPrice)
 
                 itemElement.innerHTML = `
                     <p>品名：${item.itemName}</p>
@@ -48,7 +52,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                         </div>                        
                     </div>
 
-                    <p>單價：${item.itemPrice} <a href="" class="delete"><img src="image/trash.png" alt="" class="delete"></a></p>
+                    <p>單價：${money} <a href="" class="delete"><img src="image/trash.png" alt="" class="delete"></a></p>
                 `;
 
                 const minButton = itemElement.querySelector('.min');
@@ -203,7 +207,8 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
         }
         console.log(total);
         const h2 = document.querySelector(".total");
-        h2.textContent = `總計：$${total}`;
+        total_money=numberWithCommas(total)
+        h2.textContent = `總計：$${total_money}`;
     })
     .catch(error => {
         console.error('發生錯誤:', error);
