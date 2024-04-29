@@ -147,6 +147,11 @@ a{
     .num::-webkit-inner-spin-button {
          -webkit-appearance: none;
     }
+
+    #numbox{
+        display: flex;
+        flex-direction: row;
+    }
     
     #cart_img{
         width: 100%;

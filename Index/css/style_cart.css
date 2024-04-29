@@ -178,6 +178,53 @@ a{
         display: flex;
     }
 
+
+
+    .numbox{ 
+        margin:20px 10px 40px 20px;
+        width: 130px;
+        display: flex; 
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px #d2d7db;        
+    }
+    
+    .min{
+        width: 35px; 
+        text-align: center;
+        font-size: 30px;
+        border: 0; 
+        background: #e4edf8; 
+        color: #475e85; 
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    } 
+    
+    .plus{
+        width: 35px; 
+        text-align: center;
+        font-size: 30px;
+        border:0; 
+        background: #e4edf8; 
+        color: #475e85; 
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    } 
+    
+    .num{
+        width:60px; 
+        text-align: center;
+        color: #3d6573;
+        border: 0;
+        border-top: 0;
+        border-bottom: 0;
+        font-size: 22px;
+        font-weight: bolder;
+        
+    }
+    
+    .num::-webkit-inner-spin-button {
+         -webkit-appearance: none;
+    }
 /*#endregion*/
 
 @media screen and (max-width: 768px) {
