@@ -1,3 +1,8 @@
+const numberWithCommas = (number) => {
+    return number.toLocaleString(undefined, { maximumFractionDigits: 0 });
+  };
+  
+
 fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
     .then(response => {
         if (!response.ok) {
@@ -11,12 +16,13 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
         const tableBody = document.querySelector("table tbody");
         if (data && data.length > 0) {
             data.forEach(order => {
+                var price=numberWithCommas(order.totalPrice);
                 const newRow = document.createElement('tr');
                 newRow.classList.add('tbody');
                 newRow.innerHTML = `
                     <td>${order.orderId}</td>
                     <td>${order.orderTime ? formatDateTime(order.orderTime) : ''}</td>
-                    <td>${order.totalPrice}</td>
+                    <td>${price}</td>
                     <td>${order.orderStatus}</td>
                     <td>
                         <input type="submit" value="查詢" class="button2" data-OrderId="${order.orderId}">

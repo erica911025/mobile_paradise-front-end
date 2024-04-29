@@ -1,3 +1,9 @@
+
+const numberWithCommas = (number) => {
+    return number.toLocaleString(undefined, { maximumFractionDigits: 0 });
+};
+
+
 async function getALLProduct(sortway, nowPage) {
     await fetch(`http://localhost:5193/api/Paradise/?sortway=${sortway}&nowPage=${nowPage}`, {
             method: 'GET',
@@ -107,6 +113,8 @@ async function getProductByPrice(sortway, MaxPrice, MinPrice, nowPage) {
 
 async function ShowProductHot(data) {
 
+    var price=numberWithCommas(data.ItemPriceMin);
+
     const show = document.getElementById('product_show');
     const a = document.createElement('a');
     a.href = `./product.html?ItemId=${data.ItemId}`;
@@ -121,7 +129,7 @@ async function ShowProductHot(data) {
     const h3 = document.createElement('h3');
     h3.textContent = data.ItemName;
     const p = document.createElement('p');
-    p.textContent = `NT$${data.ItemPriceMin}起`;
+    p.textContent = `NT$${price}起`;
     infoDiv.appendChild(h4);
     infoDiv.appendChild(h3);
     infoDiv.appendChild(p);
@@ -139,6 +147,8 @@ async function ShowProductHot(data) {
 async function ShowProduct(data) {
 
     data.Items.forEach(item => {
+        var price=numberWithCommas(item.ItemPriceMin);
+
         const show = document.getElementById('product_show');
         const a = document.createElement('a');
         a.href = `./product.html?ItemId=${item.ItemId}`;
@@ -153,7 +163,7 @@ async function ShowProduct(data) {
         const h3 = document.createElement('h3');
         h3.textContent = item.ItemName;
         const p = document.createElement('p');
-        p.textContent = `NT$${item.ItemPriceMin}起`;
+        p.textContent = `NT$${price}起`;
         infoDiv.appendChild(h4);
         infoDiv.appendChild(h3);
         infoDiv.appendChild(p);

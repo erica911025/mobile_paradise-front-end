@@ -1,3 +1,9 @@
+
+const numberWithCommas = (number) => {
+  return number.toLocaleString(undefined, { maximumFractionDigits: 0 });
+};
+
+
 const url = "http://localhost:5193/api/Paradise/Hot";
 
 fetch(url, { credentials: 'include' })
@@ -14,6 +20,7 @@ fetch(url, { credentials: 'include' })
 
     if (data.Message && data.Message.length > 0) {
       data.Message.forEach(item => {
+        var price=numberWithCommas(item.ItemPriceMin);
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
         carouselItem.innerHTML = `
@@ -27,7 +34,7 @@ fetch(url, { credentials: 'include' })
                 <h3>${item.ItemName}</h3>
                 <div class="ItemPriceMin">
                   <p>NT$</p>
-                  <p>${item.ItemPriceMin}起</p>
+                  <p>${price}起</p>
                 </div>
               </a>                        
             </div>                    
