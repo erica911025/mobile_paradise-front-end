@@ -1,0 +1,183 @@
+
+/* 預設 *//* #region */
+
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Microsoft JhengHei';    
+}
+
+
+a{
+    text-decoration: none;
+    color: #4c5f79;
+}
+
+/* #endregion */
+
+#header{
+    position: sticky;
+    top:0; 
+    z-index: 50;
+}
+/* 回到頂部 */
+#top img{
+    width: 60px; 
+    height: 60px;
+    position: fixed;
+    bottom: 70px;
+    right: 30px; 
+    z-index: 50;
+    box-shadow: 2px 2px 10px #bec0c1; 
+    border-radius: 100px;
+}
+
+/* 路徑 *//* #region */
+
+    .path{
+        display: flex;
+        padding: 1px 13%;
+        margin-bottom: 0;
+        background-color: #e6eeef;
+        position: sticky;
+        top:91px; 
+        z-index: 50;       
+    }
+
+    .path p{
+        margin: 5px;
+        margin-bottom: 10px;
+        color: rgb(137, 139, 142);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .path a{
+        margin: 5px;
+        margin-bottom: 10px;
+        color: rgb(80, 119, 158);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .path a:hover{
+        color: #8bb5c2;
+    }
+
+/*#endregion*/
+
+/* header *//*#region*/
+
+header{
+    background-color: #5a78a1;
+    padding: 0px 13%;
+    display: flex;  
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;  
+
+}
+
+.header{
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+}
+
+/* nav */
+
+.nav_main{
+    display: flex; 
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav_main a:hover{
+    background-color: #80a0bc;
+}
+
+
+/* 首頁/產品一覽 */
+.nav{
+    display: flex; 
+    align-items: center;
+    flex-direction: column;  
+    color: white;
+    padding:0 5px;      
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav img{
+    width: 30px; 
+    height: 30px; 
+    padding: 5px;
+}
+
+.nav a{
+    width: 90px;
+    display: flex; 
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 0px;
+}
+
+/* line/購物車/會員 */
+.nav2 a{
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    width: 40px;
+    display: flex; 
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.nav2 img{
+    width: 30px; 
+    height: 30px; 
+    padding: 3px;
+}
+
+/*#endregion*/
+
+
+
+@media screen and (max-width: 768px) {
+    header{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .header{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* footer */
+footer{
+    background-color: #5a78a1;
+    padding: 18px 15%;
+    display: flex;
+    justify-content: center;  
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 10;
+}
