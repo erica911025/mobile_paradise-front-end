@@ -248,7 +248,7 @@ form.addEventListener('submit',function(event){
       location.reload();
     }else{
       console.error('加入失敗', data.Message);
-      alert('失敗');
+      alert('失敗：'+ data.Message);
     }
   })
   .catch(error => {
