@@ -77,7 +77,7 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
                                     <div id="field1"><p> ▸ 電子信箱：${data[0].email}</p></div>
                                 </div>
                                 <div class="create">
-                                    <div id="field1"><p> ▸會員地址：${data[0].address}</p></div>
+                                    <div id="field1"><p> ▸ 會員地址：${data[0].address}</p></div>
                                 </div>
                             </form>
                         `;
