@@ -61,9 +61,10 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                             <input class="num" type="number" id="val_${item.id}" value="${item.itemNum}"/>
                             <button class="plus" type="button" > + </button>
                         </div> 
-                        <a href="" class="delete"><img src="image/trash.png" alt="" class="delete" style="width:30px"></a>                       
+                        <a href="" class="delete"><img src="image/trash.png" alt="" class="delete" style="width:30px"></a>   
+                        <p>此商品剩餘數量：${item.itemStore}</p>                    
                     </div>
-
+                    
                     <p>單價：${money} </p>
                 `;
 
@@ -143,6 +144,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                                 numInput.value = Num -1; 
                                   
                             }
+                       
                         //location.reload();
                     })
                     .catch(error => {
@@ -188,6 +190,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                                 alert('失敗：'+ data.Message);
                                   
                             }
+                            
                             //location.reload();
                         })
                         .catch(error => {

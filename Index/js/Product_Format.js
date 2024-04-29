@@ -101,6 +101,9 @@ async function generateInfo(productInfo){
 }
 
 async function generateColorOptions(productInfo){
+    const formatDiv = document.getElementById('format');
+    const productstore = document.createElement('p');
+    formatDiv.appendChild(productstore);
     const colorOptionsDiv = document.getElementById('colorOptions');
     colorOptionsDiv.innerHTML = '';
     const colors = new Set();
@@ -141,10 +144,11 @@ async function generateColorOptions(productInfo){
                     const selectedSpace = this.dataset.Space;
                     const format = productInfo.find(info => info.Color === selectedColor && info.Space === selectedSpace);
                     if (format) {
-                      var price=numberWithCommas(format.ItemPrice);
+                      var price = numberWithCommas(format.ItemPrice);
                         document.getElementById('ItemPrice').textContent = price;
                         FormatId = format.FormatId;
-                        console.log(ItemId,FormatId);
+                        console.log(format.Store);
+                        productstore.textContent = `此商品剩餘 ${format.Store} 件`;
                     }
                     spaceOptionsDiv.querySelectorAll('.SapceLabel').forEach(btn => {
                         btn.classList.remove('selected');
@@ -170,7 +174,7 @@ async function generateColorOptions(productInfo){
             input.checked = true;
         });
     });
-    
+
       colorOptionsDiv.appendChild(label);
       label.appendChild(input);
       label.appendChild(span);
