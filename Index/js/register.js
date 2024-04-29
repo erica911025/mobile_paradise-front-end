@@ -36,3 +36,16 @@ document.getElementById('registerForm').addEventListener('submit', function(even
                 console.error('發生錯誤:', error);
             });
         });
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementsByName("password")[0];
+            var toggleIcon = document.getElementById("toggleIcon");
+            
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.src = "./image/view.png";
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.src = "./image/hide.png";
+            }
+        }
