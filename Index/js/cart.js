@@ -12,6 +12,22 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
 
         console.log(data);
         let total = 0
+
+        if(data && data.length <= 0){
+            const button=document.getElementById("button");
+            const fare=document.getElementById("fare");
+            const total=document.getElementById("total");
+            button.style.display='none';
+            fare.style.display='none';
+            total.style.display='none';
+
+            const main = document.querySelector('.main');
+            const none = document.createElement('h1');
+            none.id='none';
+            none.textContent = "購物車無商品";
+            main.appendChild(none);
+        }
+
         if (data && data.length > 0) {
             data.forEach(item => {
                 const itemElement = document.createElement('div');
@@ -67,7 +83,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
     })
     .catch(error => {
         console.error('發生錯誤:', error);
-        alert('請先登入');  
-        window.location.href = './login.html';
+        // alert('請先登入');  
+        // window.location.href = './login.html';
     });
 

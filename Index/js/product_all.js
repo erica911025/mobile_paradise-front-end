@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const downArrow = document.getElementById('down');
     const upArrow = document.getElementById('up');
 
-    // 監聽品牌手機和價格分類的連結點擊事件
+
     sidebarBrand.addEventListener('click', function() {
         toggleSidebarContent(Brand);
     });
@@ -361,12 +361,12 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleArrowVisibility();
     });
 
-    // 函數來切換sidebar內容的顯示狀態
+
     function toggleSidebarContent(sidebar) {
-        // 檢查當前的顯示狀態
+
         const isCollapsed = sidebar.classList.contains('collapsed');
 
-        // 如果是收合的狀態，則展開；如果是展開的狀態，則收合
+
         if (isCollapsed) {
             sidebar.classList.remove('collapsed');
         } else {
@@ -380,15 +380,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const screenWidth = window.innerWidth;
 
     console.log("close");
-    let isCollapsed = true; // 初始狀態為收合
+    let isCollapsed = true; 
 closeBtn.addEventListener('click', function(event) {
     if (screenWidth > 576) {
         closeBtn.style.display = 'block';
         
-            event.preventDefault(); // 阻止默認行為
-            // 切換左半部(sidebar)的收合狀態
+            event.preventDefault();
             left.style.display = isCollapsed ? 'none' : 'block';
-            isCollapsed = !isCollapsed; // 切換狀態
+            isCollapsed = !isCollapsed; 
             console.log("123");
         
     } else {
@@ -397,35 +396,34 @@ closeBtn.addEventListener('click', function(event) {
         Classification.style.display = 'block';
     }
 });
-// 切換箭頭圖示的可見性
+
 function toggleArrowVisibility() {
-    const screenWidth = window.innerWidth; // 獲取螢幕寬度
+    const screenWidth = window.innerWidth;
     const downArrow = document.getElementById('down');
     const upArrow = document.getElementById('up');
     const Classification = document.getElementById('Classification');
     
-    if (screenWidth <= 576) { // 判斷螢幕寬度是否小於 576px
+    if (screenWidth <= 576) { 
         Classification.style.display = 'block'; 
         if (downArrow.style.display === 'none') {
-            downArrow.style.display = 'block'; // 顯示 down 箭頭
-            upArrow.style.display = 'none'; // 隱藏 up 箭頭
+            downArrow.style.display = 'block'; 
+            upArrow.style.display = 'none'; 
         } else {
-            downArrow.style.display = 'none'; // 隱藏 down 箭頭
-            upArrow.style.display = 'block'; // 顯示 up 箭頭
+            downArrow.style.display = 'none'; 
+            upArrow.style.display = 'block'; 
         }
     }
-    else { // 當螢幕寬度大於等於 576px 時
-        Classification.style.display = 'none'; // 隱藏 down 箭頭
+    else {
+        Classification.style.display = 'none'; 
     }
 }
 
-// 頁面加載時初始設置箭頭圖示的可見性
+
 toggleArrowVisibility();
-// 監聽視窗大小改變事件
 window.addEventListener('resize', function() { 
     const Classification = document.getElementById('Classification');
-    const screenWidth = window.innerWidth; // 獲取螢幕寬度
-    if (screenWidth > 576) { // 判斷螢幕寬度是否小於 576px
+    const screenWidth = window.innerWidth; 
+    if (screenWidth > 576) { 
         toggleArrowVisibility();
         Classification.style.display = 'none';
         closeBtn.style.display = 'block';
