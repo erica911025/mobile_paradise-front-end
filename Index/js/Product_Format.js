@@ -1,3 +1,7 @@
+const numberWithCommas = (number) => {
+  return number.toLocaleString(undefined, { maximumFractionDigits: 0 });
+};
+
 async function getProductInfo(ItemId){
   try{
     const response = 
@@ -137,7 +141,8 @@ async function generateColorOptions(productInfo){
                     const selectedSpace = this.dataset.Space;
                     const format = productInfo.find(info => info.Color === selectedColor && info.Space === selectedSpace);
                     if (format) {
-                        document.getElementById('ItemPrice').textContent = format.ItemPrice;
+                      var price=numberWithCommas(format.ItemPrice);
+                        document.getElementById('ItemPrice').textContent = price;
                         FormatId = format.FormatId;
                         console.log(ItemId,FormatId);
                     }
