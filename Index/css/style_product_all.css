@@ -368,4 +368,9 @@
         display: none;
     }
 
+    #ti{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 }
