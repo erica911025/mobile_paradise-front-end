@@ -401,6 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const left = document.getElementById('left');
     const closeBtn = document.getElementById('close');
     const screenWidth = window.innerWidth;
+    closeBtn.style.display = 'block';
 
     console.log("close");
     let isCollapsed = true; 
