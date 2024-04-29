@@ -164,7 +164,8 @@
     }
 
     #close p:hover{
-        color: rgb(97, 147, 204);
+        background-color: #8ba3b8;
+        color: white;
         
     }
     
@@ -199,11 +200,16 @@
         text-align: left;
         border-radius: 5px;
         padding: 5px;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bolder;
         border:0;
         color: #7b8ba0;
         margin: 0 8px;
+    }
+
+    #sort:hover{
+        background-color: #8ba3b8;
+        color: white;
     }
 
     #product_show{
