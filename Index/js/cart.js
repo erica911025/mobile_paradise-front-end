@@ -19,6 +19,17 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
         console.log(data);
         let total = 0;
 
+        const button = document.getElementById("button");
+        const totalElement = document.getElementById("total");
+        const errorElement = document.getElementById("error");
+        const go_login = document.getElementById("go_login");
+        button.style.display = 'block';
+        totalElement.style.display = 'block';
+        errorElement.style.display = 'none';
+        go_login.style.display = 'none';
+
+        
+
         if (data && data.length <= 0) {
             const button = document.getElementById("button");
             const fare = document.getElementById("fare");
@@ -121,7 +132,17 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                         const numInput = itemElement.querySelector('.num');
                         numInput.value = Num; // 將輸入框的值設置為更新後的數量
                         console.log(Num);
-                        location.reload();
+                        var status = data.Status;
+                            if(status === 200){
+                                //alert('修改成功')
+                                location.reload();
+                            }else{
+                                console.error('修改失敗', data.Message);
+                                alert('失敗：'+ data.Message);
+                                numInput.value = Num -1; 
+                                  
+                            }
+                        //location.reload();
                     })
                     .catch(error => {
                         console.error('發生錯誤:', error);
@@ -157,7 +178,16 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                             const numInput = itemElement.querySelector('.num');
                             numInput.value = Num; // 將輸入框的值設置為更新後的數量
                             console.log(Num);
-                            location.reload();
+                            var status = data.Status;
+                            if(status === 200){
+                                //alert('修改成功')
+                                location.reload();
+                            }else{
+                                console.error('修改失敗', data.Message);
+                                alert('失敗：'+ data.Message);
+                                  
+                            }
+                            //location.reload();
                         })
                         .catch(error => {
                             console.error('發生錯誤:', error);

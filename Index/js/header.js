@@ -70,7 +70,7 @@ function SetLogoutBtn() {
         .then(response => {
             if (response.ok) {
                 alert('已登出');
-                location.reload();
+                window.location.href = './index.html';
             } else {
                 console.error('錯誤', response.statusText);
                 alert('錯誤');
