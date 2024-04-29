@@ -41,6 +41,18 @@ a{
     color: #4e657a;
 }
 
+#go_login a{
+    text-decoration: underline;
+    width: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+#go_login a:hover{
+    background-color: #97a7c5;
+    color: white;
+}
 /* title *//* #region */
 
 .main_title{

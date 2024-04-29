@@ -19,6 +19,17 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
         console.log(data);
         let total = 0;
 
+        const button = document.getElementById("button");
+        const totalElement = document.getElementById("total");
+        const errorElement = document.getElementById("error");
+        const go_login = document.getElementById("go_login");
+        button.style.display = 'block';
+        totalElement.style.display = 'block';
+        errorElement.style.display = 'none';
+        go_login.style.display = 'none';
+
+        
+
         if (data && data.length <= 0) {
             const button = document.getElementById("button");
             const fare = document.getElementById("fare");
