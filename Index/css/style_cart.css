@@ -190,14 +190,22 @@ a{
         display: flex;
     }
 
+    
 
 
     .numbox{ 
-        margin:20px 10px 40px 20px;
+        margin:20px 10px 20px 0px;
         width: 130px;
         display: flex; 
         border-radius: 10px;
         box-shadow: 2px 2px 5px #d2d7db;        
+    }
+
+    #numbox{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
     }
     
     .min{

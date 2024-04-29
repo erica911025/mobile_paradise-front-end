@@ -60,10 +60,11 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                             <button class="min" type="button" > - </button>
                             <input class="num" type="number" id="val_${item.id}" value="${item.itemNum}"/>
                             <button class="plus" type="button" > + </button>
-                        </div>                        
+                        </div> 
+                        <a href="" class="delete"><img src="image/trash.png" alt="" class="delete" style="width:30px"></a>                       
                     </div>
 
-                    <p>單價：${money} <a href="" class="delete"><img src="image/trash.png" alt="" class="delete"></a></p>
+                    <p>單價：${money} </p>
                 `;
 
                 const minButton = itemElement.querySelector('.min');
