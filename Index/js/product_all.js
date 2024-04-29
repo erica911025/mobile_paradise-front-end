@@ -430,6 +430,7 @@ window.addEventListener('resize', function() {
         
     }
     else{
+        left.style.display = 'block';
         closeBtn.style.display = 'none';
         Classification.style.display = 'block';
         
