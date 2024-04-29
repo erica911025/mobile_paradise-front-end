@@ -96,7 +96,7 @@ async function generateInfo(productInfo){
     const introduce_detailed = document.getElementById('detailed');
     introduce_detailed.textContent = productInfo[0].Instruction;
   }catch(error){
-    console.error('Feil',error);
+    console.error('Fail',error);
   }
 }
 
