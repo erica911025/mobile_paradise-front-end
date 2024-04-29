@@ -53,6 +53,40 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
 
                 const minButton = itemElement.querySelector('.min');
                 const plusButton = itemElement.querySelector('.plus');
+                const numInput = itemElement.querySelector('.num');
+
+                                // 監聽輸入框的 input 事件，以實現輸入數量時即時更新
+                                numInput.addEventListener('input', function(event) {
+                                    event.preventDefault(); 
+                                    const Id = item.id;
+                                    const Num = parseInt(numInput.value);
+                                    
+                                    // 更新後端購物車項目的數量
+                                    fetch(`http://localhost:5193/api/Cart/UpdateItemNum`, { 
+                                        method: 'post',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify({ Id: Id, itemNum: Num }), // 使用更新後的數量
+                                        credentials: 'include'
+                                    })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('伺服器回應錯誤');
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        // 成功更新後，同步更新介面顯示的數量
+                                        console.log("數量更新成功:", Num);
+                                    })
+                                    .catch(error => {
+                                        console.error('發生錯誤:', error);
+                                    });
+                                });
+
+                                
+
 
                 plusButton.addEventListener('click', function(event) {
                     event.preventDefault(); 
