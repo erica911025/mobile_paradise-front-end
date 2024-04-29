@@ -148,7 +148,7 @@ async function generateColorOptions(productInfo){
                         document.getElementById('ItemPrice').textContent = price;
                         FormatId = format.FormatId;
                         console.log(format.Store);
-                        productstore.textContent = `此商品剩餘${format.Store}件`;
+                        productstore.textContent = `此商品剩餘 ${format.Store} 件`;
                     }
                     spaceOptionsDiv.querySelectorAll('.SapceLabel').forEach(btn => {
                         btn.classList.remove('selected');

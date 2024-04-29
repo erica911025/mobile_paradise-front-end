@@ -190,7 +190,10 @@ a{
         color: #ffffff;
         background-color: #7a8dad;
     }
-
+    #format>p{
+        font-size: 22px;
+        color: red;
+    }
 /*#endregion*/
 
 
