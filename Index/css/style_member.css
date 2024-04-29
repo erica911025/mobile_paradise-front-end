@@ -194,22 +194,43 @@ h3{
 /* 修改密碼內容 *//*#region*/
 
     /* 欄位內容 */
-    .password{
+    /* .password{
         margin: 25px 50px;
         display: flex;
         flex-direction: column;
-    }
+    } */
 
     /* 輸入框設定 */
     .text{
-        width: 80%;
+        width: 100%;
         padding: 10px;
         margin: 15px;
         border:solid 1px #a3b1c5;
         border-radius: 8px;
         font-size: 20px;
     }
+    .password {
+        display: inline-block;
+        width: 80%;
+        padding: 15px 50px;
+        font-weight: bolder;
+        font-size: 26px;
+        color: #5f7e99;
+        margin: 5px 15px;
+        position: relative; /* 保留相对定位 */
+    }
 
+    .toggle-password {
+        color: #4c5f79;
+        position: absolute;
+        padding-right: 20px;
+        padding-bottom:40px;
+        width: 30px;
+        top: 100px;
+        right: 5px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
     .button{
         text-align: center;
         margin:15px 35%;

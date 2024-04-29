@@ -37,7 +37,18 @@ form.addEventListener('submit', function(event) {
     });
 
 }); 
-
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementsByName("password")[0];
+    var toggleIcon = document.getElementById("toggleIcon");
+    
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.src = "./image/view.png";
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.src = "./image/hide.png";
+    }
+}
 // const form = document.querySelector('.form');
 //     form.addEventListener('submit', function(event) {
 //         event.preventDefault();

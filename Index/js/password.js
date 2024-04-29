@@ -37,3 +37,41 @@ document.getElementById('ChangePasswordForm').addEventListener('submit', functio
                 console.error('發生錯誤:', error);
             });
         });
+
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementsByName("OldPassword")[0];
+            var toggleIcon = document.getElementById("toggleIcon");
+            
+            if (passwordInput.type === "OldPassword") {
+                passwordInput.type = "text";
+                toggleIcon.src = "./image/view.png";
+            } else {
+                passwordInput.type = "OldPassword";
+                toggleIcon.src = "./image/hide.png";
+            }
+        }
+
+        function togglePasswordVisibility2() {
+            var passwordInput = document.getElementsByName("NewPassword")[0];
+            var toggleIcon = document.getElementById("toggleIcon");
+            
+            if (passwordInput.type === "NewPassword") {
+                passwordInput.type = "text";
+                toggleIcon.src = "./image/view.png";
+            } else {
+                passwordInput.type = "NewPassword";
+                toggleIcon.src = "./image/hide.png";
+            }
+        }
+        function togglePasswordVisibility3() {
+            var passwordInput = document.getElementsByName("NewPasswordCheck")[0];
+            var toggleIcon = document.getElementById("toggleIcon");
+            
+            if (passwordInput.type === "NewPasswordCheck") {
+                passwordInput.type = "text";
+                toggleIcon.src = "./image/view.png";
+            } else {
+                passwordInput.type = "NewPasswordCheck";
+                toggleIcon.src = "./image/hide.png";
+            }
+        }
