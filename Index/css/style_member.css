@@ -162,24 +162,47 @@ h3{
 /* 會員資料內容 *//*#region*/
 
     #member{
+        display: flex;
+        justify-content: center;
         margin: 10px 5%;
-        padding: 20px 15%;
+        padding: 20px 0%;
         border-top: solid #c4d5e1 5px;
     }
 
     /* 欄位內容 */
     .member{
-        margin: 25px 0;
+        margin: 10px 0;
         display: flex;
         flex-direction: row;
         align-items: center;
         font-size: 24px;
+    }        
+    
+    /* 欄位內容 */
+    .member_card{
+        margin: 25px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        font-size: 24px;
     }
 
-    .member p{
+    .member p {
         margin: 10px;
         font-weight: bolder;
         color: #51687a;
+    }
+
+    .member_card h3{
+        margin: 10px;
+        font-weight: bolder;
+        color: #51687a;
+    }
+
+    .member_card p{
+        margin: 10px;
+        font-weight: bolder;
+        color: #6999bd;
     }
 
     .member img{
@@ -368,7 +391,33 @@ border-radius: 5px;
 /* #endregion  */
 
 
-@media screen and (max-width: 768px) {
+#card{
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    border: #c8d2da 2px solid;
+    padding: 30px;
+    margin: 50px 5%;
+    border-radius: 30px;
+}
+
+#card img{
+    width: 80%;
+}
+
+#member_img{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+
+#member_item{
+    width: 50%;
+}
+
+@media screen and (max-width: 1068px) {
     h2{
         font-size: 20px;
     }
@@ -383,6 +432,8 @@ border-radius: 5px;
         font-size: 20px;
     }
     #member{
+        display: flex;
+        flex-direction: column;
         padding: 20px 5%;
         border-top: solid #c4d5e1 5px;
     }
@@ -392,4 +443,19 @@ border-radius: 5px;
     #Email{
         margin-left: 30px;
     }
+
+ 
+}
+@media screen and (max-width: 768px) {
+
+#member_img{
+    display: none;
+}
+#member_item{
+    width: 100%;
+}
+#card{
+    padding: 10px;
+}
+
 }

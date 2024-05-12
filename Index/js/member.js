@@ -16,12 +16,19 @@ fetch(url,{credentials: 'include'})
     const nameElement = document.getElementById('Name');
     const cellphoneElement = document.getElementById('Cellphone');
     const emailElement = document.getElementById('Email');
+    const memberKindElement = document.getElementById('memberKind');
+    const memberTimeElement = document.getElementById('memberTime');
 
     
     accountElement.textContent = data.account1;
     nameElement.textContent = data.name;
     cellphoneElement.textContent = data.cellphone;
     emailElement.textContent = data.email;
+    memberKindElement.textContent = data.memberKind;
+    memberTimeElement.textContent = formatDateTime(data.memberTime);
+
+
+
 
   })
   .catch(error => {
@@ -29,3 +36,12 @@ fetch(url,{credentials: 'include'})
   });
 
 
+function formatDateTime(dateTimeString) {
+    const dateTime = new Date(dateTimeString);
+    const year = dateTime.getFullYear();
+    const month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
+    const date = ('0' + dateTime.getDate()).slice(-2);
+    
+    const formattedDateTime = `${year}-${month}-${date} `;
+    return formattedDateTime;
+}

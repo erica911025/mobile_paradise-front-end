@@ -136,28 +136,50 @@
             <img src="image/icon_dots.png" >
         </div>
 
+        
+
         <!-- 會員資料 -->
         <div id="member">
-            <div class="member">
+            <div id="card">
+                <div id="member_img">
+                    <img src="./image/member.png" alt="" >
+                </div>
+                <div id="member_item">
+                    <div class="member_card change" style="display: flex; flex-direction: column; ">
+                        <h3>會員等級：</h3>
+                        <p id="memberKind"></p>
+                    </div>
+                    <div class="member_card change" style="display: flex; flex-direction: column;">
+                        <h3>會員到期日：</h3>
+                        <p id="memberTime"></p>
+                    </div>  
+                </div>
+                                  
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                 <div class="member">
                 <img src="./image/circle.png" alt="" >
                 <h3>會員帳號：</h3>
                 <p id="Account1"></p>
+                </div>
+                <div class="member">
+                    <img src="./image/circle.png" alt="" >
+                    <h3>會員姓名：</h3>
+                    <p id="Name"></p>
+                </div>
+                <div class="member">
+                    <img src="./image/circle.png" alt="" >
+                    <h3>電話號碼：</h3>
+                    <p id="Cellphone"></p>
+                </div>
+                <div class="member change">
+                    <img src="./image/circle.png" alt="" >
+                    <h3>電子信箱：</h3>
+                    <p id="Email"></p>
+                </div>
+
             </div>
-            <div class="member">
-                <img src="./image/circle.png" alt="" >
-                <h3>會員姓名：</h3>
-                <p id="Name"></p>
-            </div>
-            <div class="member">
-                <img src="./image/circle.png" alt="" >
-                <h3>電話號碼：</h3>
-                <p id="Cellphone"></p>
-            </div>
-            <div class="member change">
-                <img src="./image/circle.png" alt="" >
-                <h3>電子信箱：</h3>
-                <p id="Email"></p>
-            </div>
+           
         </div>
      
      </div>
