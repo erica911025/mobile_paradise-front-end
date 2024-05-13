@@ -18,7 +18,8 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
 
         console.log(data);
         let total = 0;
-
+        let totalDis = 0;
+        let totalafterDis = 0;
         const button = document.getElementById("button");
         const totalElement = document.getElementById("total");
         const errorElement = document.getElementById("error");
@@ -236,14 +237,15 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                             console.error('發生錯誤:', error);
                         });
                 });
-                total += item.itemPrice * item.itemNum;
+                total =item.allPrice;
+                totalDis = item.allDiscount;
+                totalafterDis = item.priceAfterDis;
                 itemContainer.appendChild(itemElement);
             });
         }
-        console.log(total);
+        console.log(totalDis);
         const h2 = document.querySelector(".total");
-        total_money=numberWithCommas(total)
-        h2.textContent = `總計：$${total_money}`;
+        h2.textContent = `折扣後總計：$${totalafterDis}`;
     })
     .catch(error => {
         console.error('發生錯誤:', error);
