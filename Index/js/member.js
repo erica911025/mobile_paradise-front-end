@@ -24,8 +24,15 @@ fetch(url,{credentials: 'include'})
     nameElement.textContent = data.name;
     cellphoneElement.textContent = data.cellphone;
     emailElement.textContent = data.email;
-    memberKindElement.textContent = data.memberKind;
-    memberTimeElement.textContent = formatDateTime(data.memberTime);
+    if(data.memberKind==null){
+      memberKindElement.textContent = "一般會員";
+      memberTimeElement.textContent = "永久";
+    }
+    else{
+      memberKindElement.textContent = data.memberKind;
+      memberTimeElement.textContent = formatDateTime(data.memberTime);
+    }
+    
 
 
 
@@ -38,7 +45,7 @@ fetch(url,{credentials: 'include'})
 
 function formatDateTime(dateTimeString) {
     const dateTime = new Date(dateTimeString);
-    const year = dateTime.getFullYear();
+    const year = dateTime.getFullYear()+1;
     const month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
     const date = ('0' + dateTime.getDate()).slice(-2);
     
