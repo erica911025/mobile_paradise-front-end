@@ -245,6 +245,15 @@ a{
     .num::-webkit-inner-spin-button {
          -webkit-appearance: none;
     }
+
+    #discount{
+        font-size: 22px;
+        color: #c58879;
+    }
+
+    #money{
+        display: flex;
+    }
 /*#endregion*/
 
 @media screen and (max-width: 768px) {
