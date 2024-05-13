@@ -19,6 +19,7 @@ fetch(url,{credentials: 'include'})
     const memberKindElement = document.getElementById('memberKind');
     const memberTimeElement = document.getElementById('memberTime');
 
+    const card = document.getElementById('card');
     
     accountElement.textContent = data.account1;
     nameElement.textContent = data.name;
@@ -26,6 +27,15 @@ fetch(url,{credentials: 'include'})
     emailElement.textContent = data.email;
     memberKindElement.textContent = data.memberKind;
     memberTimeElement.textContent = formatDateTime(data.memberTime);
+
+
+    console.log(data.memberKind);
+    if(data.memberKind=="銀級會員"){
+      card.style.backgroundColor='#f7f8fa';
+    }
+    else if(data.memberKind=="金級會員"){
+      card.style.backgroundColor='#fafaee';
+    }
 
 
 
@@ -42,6 +52,6 @@ function formatDateTime(dateTimeString) {
     const month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
     const date = ('0' + dateTime.getDate()).slice(-2);
     
-    const formattedDateTime = `${year}-${month}-${date} `;
+    const formattedDateTime = `${year+1}-${month}-${date} `;
     return formattedDateTime;
 }
