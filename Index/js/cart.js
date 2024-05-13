@@ -66,6 +66,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                     </div>
                     
                     <p>單價：${money} </p>
+                    <p>取得折扣(單筆)：${item.discount}</p>
                 `;
 
                 const minButton = itemElement.querySelector('.min');

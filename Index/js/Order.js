@@ -63,9 +63,10 @@ fetch("http://localhost:5193/api/Cart/GetOrderItem", { credentials: 'include' })
                                     <h2>訂購商品：</h2>
                                 </div>
                                 <div class="create">
-                                    ${data.map(item => `
+                                    ${data.map(item =>
+                                         `
                                         <div class="create">
-                                            <div id="field1">◎ 【${item.brand}】  ${item.itemName}  ${item.space}  /  ${item.color} * ${item.itemNum} </p></div>
+                                            <div id="field1">◎ 【${item.brand}】  ${item.itemName}  ${item.space}  /  ${item.color} * ${item.itemNum}  <br>單筆折扣：${item.discount}</p></div>
                                         </div>
 
                                     `).join('')}
