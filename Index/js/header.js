@@ -89,20 +89,20 @@ document.addEventListener('DOMContentLoaded', function(){
 );
 document.addEventListener('DOMContentLoaded', function() {
     const navList = document.querySelectorAll('.n');
-    const close = document.getElementById('close');
+    const close123 = document.getElementById('close123');
     const hid= document.getElementById('hid');
 
     function updateDisplay() {
         const screenWidth = window.innerWidth;
 
         if (screenWidth <= 768) {
-            close.style.display = 'block';
+            close123.style.display = 'block';
             navList.forEach(function(navItem) {
                 navItem.style.display = 'none';
                 hid.style.display = 'none';
             });
         } else {
-            close.style.display = 'none';
+            close123.style.display = 'none';
             navList.forEach(function(navItem) {
                 navItem.style.display = 'block';
             });
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateDisplay(); // 初始設置
 
-    close.addEventListener('click', function(event) {
+    close123.addEventListener('click', function(event) {
             if (hid.style.display === 'none') {
                 hid.style.display = 'flex';
             } else {
