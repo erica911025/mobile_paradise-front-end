@@ -25,12 +25,13 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                     <p>數量：${item.itemNum}</p>
                     <p>單價：${item.itemPrice} </p>
                 `;
-                total += item.itemPrice * item.itemNum;
+                discount = item.allDiscount;
+                total = item.priceAfterDis;
                 itemContainer.appendChild(itemElement);
             });
         }
-        
-        
+        const h1 = document.querySelector(".discount")
+        h1.textContent = `折扣：$${discount}`;
         const h2 = document.querySelector(".total")
         h2.textContent = `總計：$${total}`;
 
