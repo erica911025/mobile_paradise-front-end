@@ -34,14 +34,14 @@ fetch(url,{credentials: 'include'})
       memberTimeElement.textContent = formatDateTime(data.memberTime);
     }
     
-
+s
 
     console.log(data.memberKind);
     if(data.memberKind=="銀級會員"){
-      card.style.backgroundColor='#f7f8fa';
+      card.style.backgroundColor='#e7eaeb';
     }
     else if(data.memberKind=="金級會員"){
-      card.style.backgroundColor='#fafaee';
+      card.style.backgroundColor='#fefee8';
     }
 
 
