@@ -288,12 +288,21 @@ async function SimilarItem(ItemId, FormatId) {
     const data = await response.json();
     console.log("Received data:", data);
 
-    const show = document.getElementById('similar');
+    const show = document.getElementById('similar_product');
 
     if (!show) {
       console.error("Element with ID 'similar' not found");
       return;
     }
+    else{
+          const show1 = document.getElementById('similar_title');
+          const main = document.createElement('div');
+          const h2 = document.createElement('h2');
+          h2.textContent = `其他相似商品`;
+          main.appendChild(h2);
+          show1.appendChild(main);
+    }
+
 
 
     data.Message.forEach(item => {

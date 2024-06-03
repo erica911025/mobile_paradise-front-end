@@ -358,10 +358,20 @@ a{
 
 #similar{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+}
+#similar_product{
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     margin: 50px 0px;
 }
+
 
 .product{
     margin: 20px;
