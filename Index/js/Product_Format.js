@@ -343,6 +343,7 @@ async function SimilarItem(ItemId, FormatId) {
       const p = document.createElement('p');
       p.textContent = `NT$${numberWithCommas(item.ItemPrice)}起`;
 
+      a.style="margin:50px 20px;"
       show.style="border-bottom: solid #e0e6e8 1.5px;";
 
       infoDiv.appendChild(h4);
@@ -426,6 +427,7 @@ async function OtherBuy(ItemId, FormatId) {
       const p = document.createElement('p');
       p.textContent = `NT$${numberWithCommas(item.ItemPrice)}起`;
 
+      a.style="margin:50px 20px;"
       show.style="border-bottom: solid #e0e6e8 1.5px;";
 
       infoDiv.appendChild(h4);
