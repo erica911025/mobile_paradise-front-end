@@ -256,6 +256,21 @@ form.addEventListener('submit',function(event){
       alert('加入成功')
       console.log(`Requesting similar items for ItemId: ${ItemId}, FormatId: ${FormatId}`);
       SimilarItem(ItemId,FormatId);
+      OtherBuy(ItemId, FormatId);
+
+      // 等待元素加载完成
+      setTimeout(() => {
+        const element = document.getElementById('similar_title');
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const offset = 150; // 微調量
+          window.scrollTo({
+            top: rect.top + window.scrollY - offset,
+            behavior: 'smooth'
+          });
+        }
+      }, 500); // 等待0.5秒後再進行滾動
+
     }else{
       console.error('加入失敗', data.Message);
       alert('失敗：'+ data.Message);
@@ -305,6 +320,89 @@ async function SimilarItem(ItemId, FormatId) {
       show1.appendChild(main);
       
     data.Message.forEach(item => {
+      console.log(item);
+
+      const a = document.createElement('a');
+      a.href = `./product.html?ItemId=${item.ItemId}`;
+      a.className = 'product';
+
+      const div = document.createElement('div');
+
+      const img = document.createElement('img');
+      img.src = `image/${item.ItemImg[0]}`;
+      img.alt = "商品圖片";
+
+      const infoDiv = document.createElement('div');
+
+      const h4 = document.createElement('h4');
+      h4.textContent = `【${item.Brand}】`;
+
+      const h3 = document.createElement('h3');
+      h3.textContent = item.ItemName;
+
+      const p = document.createElement('p');
+      p.textContent = `NT$${numberWithCommas(item.ItemPrice)}起`;
+
+      show.style="border-bottom: solid #e0e6e8 1.5px;";
+
+      infoDiv.appendChild(h4);
+      infoDiv.appendChild(h3);
+      infoDiv.appendChild(p);
+
+      div.appendChild(img);
+      div.appendChild(infoDiv);
+      a.appendChild(div);
+      show.appendChild(a);
+    });
+    }
+
+  } catch (error) {
+    console.error('Error fetching similar items:', error);
+  }
+}
+
+
+
+
+
+async function OtherBuy(ItemId, FormatId) {
+  console.log("Fetching similar items...");
+
+  try {
+    const response = await fetch(`http://localhost:5193/api/Paradise/Otherbuy?ItemId=${ItemId}&FormatId=${FormatId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch similar items');
+    }
+    
+
+    const data = await response.json();
+    console.log("Received data:", data);
+
+    const show = document.getElementById('Otherbuy_product');
+
+    if (!show) {
+      console.error("Element with ID 'Otherbuy' not found");
+      return;
+    }
+
+    if(show.childElementCount == 0){
+      const show1 = document.getElementById('Otherbuy_title');
+      const main = document.createElement('div');
+      const h2 = document.createElement('h2');
+      h2.textContent = `買過此商品的人也買過`;
+      h2.style="padding-top:50px"
+      main.appendChild(h2);
+      show1.appendChild(main);
+      
+    data.Message.forEach(item => {
+      console.log("相似商品");
       console.log(item);
 
       const a = document.createElement('a');

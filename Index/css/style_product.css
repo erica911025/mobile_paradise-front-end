@@ -371,7 +371,7 @@ a{
     font-size: 30px;
 }
 
-#similar_product{
+#similar_product ,#Otherbuy_product{
     width: 100%;
     display: flex;
     flex-direction: row;
