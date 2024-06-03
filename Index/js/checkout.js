@@ -1,3 +1,7 @@
+const numberWithCommas = (number) => {
+    return number.toLocaleString(undefined, { maximumFractionDigits: 0 });
+};
+
 
 fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
     .then(response => {
@@ -17,19 +21,22 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
         let total = 0;
         if (data && data.length > 0) {
             data.forEach(item => {
+                money=numberWithCommas(item.itemPrice)
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('content');
                 itemElement.innerHTML = `
                     <p>品名：${item.itemName}</p>
                     <p>規格：${item.space} / ${item.color}</p>
                     <p>數量：${item.itemNum}</p>
-                    <p>單價：${item.itemPrice} </p>
+                    <p>單價：${money} </p>
                 `;
                 discount = item.allDiscount;
                 total = item.priceAfterDis;
                 itemContainer.appendChild(itemElement);
             });
         }
+        discount=numberWithCommas(discount);
+        total=numberWithCommas(total);
         const h1 = document.querySelector(".discount")
         h1.textContent = `折扣：$${discount}`;
         const h2 = document.querySelector(".total")

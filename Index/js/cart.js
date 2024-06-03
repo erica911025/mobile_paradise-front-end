@@ -50,7 +50,8 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
             data.forEach(item => {
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('content');
-                money=numberWithCommas(item.itemPrice)
+                money=numberWithCommas(item.itemPrice);
+                discount=numberWithCommas(item.discount);
 
                 itemElement.innerHTML = `
                     <p>品名：${item.itemName}</p>
@@ -68,7 +69,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
                     
                     <div id="money">
                         <p>單價：${money} </p>
-                        <p id="discount"> 會員折扣: ${item.discount} </p>
+                        <p id="discount"> 會員折扣: ${discount} </p>
                     </div>
 
                 `;
@@ -247,6 +248,7 @@ fetch("http://localhost:5193/api/Cart", { credentials: 'include' })
             });
         }
         console.log(totalDis);
+        totalafterDis=numberWithCommas(totalafterDis)
         const h2 = document.querySelector(".total");
         h2.textContent = `折扣後總計：$${totalafterDis}`;
     })
