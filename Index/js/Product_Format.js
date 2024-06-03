@@ -284,6 +284,7 @@ async function SimilarItem(ItemId, FormatId) {
     if (!response.ok) {
       throw new Error('Failed to fetch similar items');
     }
+    
 
     const data = await response.json();
     console.log("Received data:", data);
@@ -294,19 +295,17 @@ async function SimilarItem(ItemId, FormatId) {
       console.error("Element with ID 'similar' not found");
       return;
     }
-    else{
-          const show1 = document.getElementById('similar_title');
-          const main = document.createElement('div');
-          const h2 = document.createElement('h2');
-          h2.textContent = `其他相似商品`;
-          main.appendChild(h2);
-          show1.appendChild(main);
-    }
 
-
-
+    if(show.childElementCount == 0){
+      const show1 = document.getElementById('similar_title');
+      const main = document.createElement('div');
+      const h2 = document.createElement('h2');
+      h2.textContent = `相似商品推薦`;
+      main.appendChild(h2);
+      show1.appendChild(main);
+      
     data.Message.forEach(item => {
-
+      console.log(item);
 
       const a = document.createElement('a');
       a.href = `./product.html?ItemId=${item.ItemId}`;
@@ -329,6 +328,8 @@ async function SimilarItem(ItemId, FormatId) {
       const p = document.createElement('p');
       p.textContent = `NT$${numberWithCommas(item.ItemPrice)}起`;
 
+      show.style="border-bottom: solid #e0e6e8 1.5px;";
+
       infoDiv.appendChild(h4);
       infoDiv.appendChild(h3);
       infoDiv.appendChild(p);
@@ -338,6 +339,8 @@ async function SimilarItem(ItemId, FormatId) {
       a.appendChild(div);
       show.appendChild(a);
     });
+    }
+
   } catch (error) {
     console.error('Error fetching similar items:', error);
   }
