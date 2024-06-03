@@ -34,7 +34,7 @@ fetch(url,{credentials: 'include'})
       memberTimeElement.textContent = formatDateTime(data.memberTime);
     }
     
-s
+
 
     console.log(data.memberKind);
     if(data.memberKind=="銀級會員"){
