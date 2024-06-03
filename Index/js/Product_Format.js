@@ -254,7 +254,8 @@ form.addEventListener('submit',function(event){
     var status = data.Status;
     if(status === 200){
       alert('加入成功')
-      location.reload();
+      console.log(`Requesting similar items for ItemId: ${ItemId}, FormatId: ${FormatId}`);
+      SimilarItem(ItemId,FormatId);
     }else{
       console.error('加入失敗', data.Message);
       alert('失敗：'+ data.Message);
@@ -266,6 +267,88 @@ form.addEventListener('submit',function(event){
   })
 
 });
+
+
+async function SimilarItem(ItemId, FormatId) {
+  console.log("Fetching similar items...");
+
+  try {
+    const response = await fetch(`http://localhost:5193/api/Paradise/Similar?ItemId=${ItemId}&FormatId=${FormatId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch similar items');
+    }
+
+    const data = await response.json();
+    console.log("Received data:", data);
+
+    const show = document.getElementById('similar');
+
+    if (!show) {
+      console.error("Element with ID 'similar' not found");
+      return;
+    }
+
+
+    data.Message.forEach(item => {
+
+
+      const a = document.createElement('a');
+      a.href = `./product.html?ItemId=${item.ItemId}`;
+      a.className = 'product';
+
+      const div = document.createElement('div');
+
+      const img = document.createElement('img');
+      img.src = `image/${item.ItemImg[0]}`;
+      img.alt = "商品圖片";
+
+      const infoDiv = document.createElement('div');
+
+      const h4 = document.createElement('h4');
+      h4.textContent = `【${item.Brand}】`;
+
+      const h3 = document.createElement('h3');
+      h3.textContent = item.ItemName;
+
+      const p = document.createElement('p');
+      p.textContent = `NT$${numberWithCommas(item.ItemPrice)}起`;
+
+      infoDiv.appendChild(h4);
+      infoDiv.appendChild(h3);
+      infoDiv.appendChild(p);
+
+      div.appendChild(img);
+      div.appendChild(infoDiv);
+      a.appendChild(div);
+      show.appendChild(a);
+    });
+  } catch (error) {
+    console.error('Error fetching similar items:', error);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const QA = document.getElementById('QAForm');
 QA.addEventListener('submit', function(event){
@@ -321,6 +404,25 @@ function formatDateTime(dateTimeString) {
   const formattedDateTime = `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
   return formattedDateTime;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  /*const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 const url = "http://localhost:5193/api/Paradise/ProductInfo?ItemId=6"; 
 
