@@ -27,7 +27,7 @@ form.addEventListener('submit', function(event) {
             window.location.href = './Index.html';
         } else {
             console.error('登入失敗', data.Message);
-            alert('登入失敗，請檢查您的帳號和密碼');
+            alert('登入失敗，帳號已被停權');
         }
     })
 
